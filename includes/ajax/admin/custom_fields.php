@@ -100,15 +100,12 @@ try {
       if (is_empty($_POST['field_order']) || !is_numeric($_POST['field_order'])) {
         throw new Exception(__("You have to enter valid field order"));
       }
-      /* prepare */
       $_POST['is_link'] = (isset($_POST['is_link'])) ? '1' : '0';
       $_POST['mandatory'] = (isset($_POST['mandatory'])) ? '1' : '0';
       $_POST['in_registration'] = (isset($_POST['in_registration']) || in_array($_POST['field_for'], ['product', 'job', 'offer'])) ? '1' : '0';
       $_POST['in_profile'] = (isset($_POST['in_profile']) || in_array($_POST['field_for'], ['product', 'job', 'offer'])) ? '1' : '0';
       $_POST['in_search'] = (!isset($_POST['in_search']) || in_array($_POST['field_for'], ['product', 'job', 'offer'])) ? '0' : '1';
-      /* insert */
       $db->query(sprintf("INSERT INTO custom_fields (field_for, type, select_options, label, description, place, length, field_order, is_link, mandatory, in_registration, in_profile, in_search) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", secure($_POST['field_for']), secure($_POST['type']), secure($_POST['select_options']), secure($_POST['label']), secure($_POST['description']), secure($_POST['place']), secure($_POST['length'], 'int'), secure($_POST['field_order'], 'int'), secure($_POST['is_link']), secure($_POST['mandatory']), secure($_POST['in_registration']), secure($_POST['in_profile']), secure($_POST['in_search']))) or _error('SQL_ERROR_THROWEN');
-      /* return */
       return_json(array('callback' => 'window.location = "' . $system['system_url'] . '/' . $control_panel['url'] . '/custom_fields";'));
       break;
 
