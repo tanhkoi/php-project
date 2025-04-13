@@ -32,7 +32,7 @@
 
       {if $sub_view == ""}
         <div class="row">
-          <div class="col-sm-4">
+          <div class="col-sm-6">
             <div class="stat-panel bg-gradient-indigo">
               <div class="stat-cell narrow">
                 <i class="fa fa-newspaper bg-icon"></i>
@@ -41,21 +41,12 @@
               </div>
             </div>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-6">
             <div class="stat-panel bg-gradient-primary">
               <div class="stat-cell narrow">
                 <i class="fa fa-comments bg-icon"></i>
                 <span class="text-xxlg">{$insights['posts_comments']}</span><br>
                 <span class="text-lg">{__("Comments")}</span><br>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="stat-panel bg-gradient-info">
-              <div class="stat-cell narrow">
-                <i class="fa fa-smile bg-icon"></i>
-                <span class="text-xxlg">{$insights['posts_likes']}</span><br>
-                <span class="text-lg">{__("Total Reactions")}</span><br>
               </div>
             </div>
           </div>

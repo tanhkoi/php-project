@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-11-11 14:14:22
+/* Smarty version 4.3.4, created on 2025-04-13 12:44:41
   from 'C:\xampp\htdocs\content\themes\default\templates\admin.posts.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_6732113ebbefe0_18438836',
+  'unifunc' => 'content_67fbb1b94bc2d0_60266786',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2d1c3773e5511cfa7e44b6a82dc089eb49c099a6' => 
     array (
       0 => 'C:\\xampp\\htdocs\\content\\themes\\default\\templates\\admin.posts.tpl',
-      1 => 1692210603,
+      1 => 1744548279,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:__categories.recursive_options.tpl' => 2,
   ),
 ),false)) {
-function content_6732113ebbefe0_18438836 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67fbb1b94bc2d0_60266786 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="card">
   <div class="card-header with-icon">
     <?php if ($_smarty_tpl->tpl_vars['sub_view']->value == "find") {?>
@@ -73,7 +73,7 @@ function content_6732113ebbefe0_18438836 (Smarty_Internal_Template $_smarty_tpl)
 
       <?php if ($_smarty_tpl->tpl_vars['sub_view']->value == '') {?>
         <div class="row">
-          <div class="col-sm-4">
+          <div class="col-sm-6">
             <div class="stat-panel bg-gradient-indigo">
               <div class="stat-cell narrow">
                 <i class="fa fa-newspaper bg-icon"></i>
@@ -84,24 +84,13 @@ function content_6732113ebbefe0_18438836 (Smarty_Internal_Template $_smarty_tpl)
               </div>
             </div>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-6">
             <div class="stat-panel bg-gradient-primary">
               <div class="stat-cell narrow">
                 <i class="fa fa-comments bg-icon"></i>
                 <span class="text-xxlg"><?php echo $_smarty_tpl->tpl_vars['insights']->value['posts_comments'];?>
 </span><br>
                 <span class="text-lg"><?php echo __("Comments");?>
-</span><br>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="stat-panel bg-gradient-info">
-              <div class="stat-cell narrow">
-                <i class="fa fa-smile bg-icon"></i>
-                <span class="text-xxlg"><?php echo $_smarty_tpl->tpl_vars['insights']->value['posts_likes'];?>
-</span><br>
-                <span class="text-lg"><?php echo __("Total Reactions");?>
 </span><br>
               </div>
             </div>
