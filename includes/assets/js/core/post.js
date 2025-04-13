@@ -1,12 +1,5 @@
-/**
- * post js
- * 
- * Sngine
- * 
- */
 
-// initialize API URLs
-/* live */
+//live post
 api['live/reaction'] = ajax_path + "live/reaction.php";
 /* posts */
 api['comments/filter'] = ajax_path + "posts/filter.php?handle=comments";
@@ -697,7 +690,7 @@ $(function () {
       $('.js_publisher-tab[data-tab="location"]').addClass('activated');
     }
   });
-  /* publisher patterns */
+  //publisher patterns
   $('body').on('click', '.js_publisher-pattern', function () {
     var _this = $(this);
     var publisher = _this.parents('.publisher');
@@ -1617,7 +1610,7 @@ $(function () {
         });
     });
   });
-  /* approve post */
+  //approve post
   $('body').on('click', '.js_approve-post', function (e) {
     e.preventDefault();
     var _this = $(this);
@@ -2659,67 +2652,191 @@ $(function () {
   });
   /* unpin photo */
   $('body').on('click', '.js_unpin-photo', function (e) {
+    // Gắn sự kiện "click" vào toàn bộ body, lắng nghe khi có phần tử nào có class 'js_unpin-photo' được nhấp vào
+    // Khi nhấp vào, thực hiện function với tham số e (đối tượng sự kiện)
+
     e.stopPropagation();
+    // Ngăn chặn sự kiện click lan truyền (bubble) lên các phần tử cha
+    // Điều này đảm bảo rằng sự kiện chỉ ảnh hưởng đến phần tử hiện tại, không kích hoạt các sự kiện click của các phần tử cha
+
     e.preventDefault();
+    // Ngăn chặn hành động mặc định của sự kiện (ví dụ: nếu phần tử là thẻ <a>, ngăn không cho trình duyệt chuyển hướng)
+    // Đảm bảo rằng hành động chỉ được xử lý bởi mã JavaScript
+
     var _this = $(this);
+    // Lưu tham chiếu đến phần tử được nhấp (có class 'js_unpin-photo') vào biến _this
+    // Sử dụng $(this) để biến phần tử DOM thành đối tượng jQuery, giúp dễ thao tác
+
     var id = $(this).data('id');
+    // Lấy giá trị của thuộc tính data-id từ phần tử được nhấp
+    // Thuộc tính này chứa ID của ảnh cần bỏ ghim, được gửi lên server để xử lý
+    // Lưu vào biến id
+
     $.post(api['albums/action'], { 'do': 'unpin_photo', 'id': id }, function (response) {
+      // Gửi một yêu cầu POST đến API tại đường dẫn api['albums/action']
+      // Dữ liệu gửi đi là một object chứa:
+      // - 'do': 'unpin_photo' (thao tác là bỏ ghim ảnh)
+      // - 'id': Giá trị ID của ảnh (lấy từ data-id)
+      // Sau khi server trả về phản hồi, thực hiện function với tham số response (phản hồi từ server)
+
       /* check the response */
       if (response.callback) {
         eval(response.callback);
-      } else {
+      }
+      // Kiểm tra nếu phản hồi từ server (response) có thuộc tính 'callback'
+      // Nếu có, sử dụng hàm eval() để thực thi chuỗi mã JavaScript trong response.callback
+      // (Cảnh báo: eval() có thể gây rủi ro bảo mật nếu dữ liệu từ server không được kiểm soát chặt chẽ)
+
+      else {
         _this.removeClass('js_unpin-photo pinned').addClass('js_pin-photo');
       }
+      // Nếu không có callback, thực hiện cập nhật giao diện phía client:
+      // - Xóa các class 'js_unpin-photo' và 'pinned' khỏi phần tử _this
+      // - Thêm class 'js_pin-photo' vào phần tử _this
+      // Điều này thay đổi trạng thái giao diện từ "bỏ ghim" thành "có thể ghim lại"
+
     }, 'json')
+      // Chỉ định rằng phản hồi từ server được mong đợi ở định dạng JSON
+
       .fail(function () {
+        // Nếu yêu cầu POST thất bại (do lỗi mạng, server, v.v.), thực hiện function này:
+
         modal('#modal-message', { title: __['Error'], message: __['There is something that went wrong!'] });
+        // Hiển thị một cửa sổ modal (popup) với ID '#modal-message'
+        // - Tiêu đề: __['Error'] (dịch là "Lỗi")
+        // - Nội dung: __['There is something that went wrong!'] (dịch là "Có điều gì đó đã xảy ra không đúng!")
       });
+    // Kết thúc xử lý lỗi của $.post
+
   });
+  // Kết thúc sự kiện click
 
 
   // handle announcment
+  // Bình luận: Đây là phần xử lý các thông báo (announcements) trên giao diện
+
   /* hide */
+  // Bình luận: Phần này xử lý việc ẩn một thông báo
+
   $('body').on('click', '.js_announcment-remover', function () {
+    // Gắn sự kiện "click" vào toàn bộ body, lắng nghe khi có phần tử nào có class 'js_announcment-remover' được nhấp vào
+    // Khi nhấp vào, thực hiện function sau:
+    // (Lưu ý: Có lỗi chính tả nhỏ trong class 'js_announcment-remover', đúng ra phải là 'js_announcement-remover')
+
     var announcment = $(this).parent();
+    // Lấy phần tử cha trực tiếp của phần tử được nhấp (thẻ chứa nút xóa, thường là container của thông báo)
+    // Lưu vào biến announcment để sử dụng sau
+    // (Lưu ý: Tương tự, biến 'announcment' có lỗi chính tả, đúng ra là 'announcement')
+
     var id = $(this).data('id');
+    // Lấy giá trị của thuộc tính data-id từ phần tử được nhấp (thẻ có class 'js_announcment-remover')
+    // Thuộc tính này chứa ID của thông báo, dùng để gửi lên server
+    // Lưu vào biến id
+
     confirm(__['Delete'], __['Are you sure you want to delete this?'], function () {
+      // Hiển thị một hộp thoại xác nhận (confirm) với:
+      // - Tiêu đề: __['Delete'] (dịch là "Xóa")
+      // - Nội dung: __['Are you sure you want to delete this?'] (dịch là "Bạn có chắc chắn muốn xóa cái này không?")
+      // Nếu người dùng nhấn OK (đồng ý), thực hiện function bên trong:
+
       /* remove the announcment */
       announcment.fadeOut();
+      // Ẩn dần (fadeOut) phần tử thông báo (announcment) khỏi giao diện người dùng
+      // Hiệu ứng fadeOut tạo cảm giác mượt mà khi thông báo biến mất
+
       $.post(api['posts/reaction'], { 'do': 'hide_announcement', 'id': id }, function (response) {
+        // Gửi một yêu cầu POST đến API tại đường dẫn api['posts/reaction']
+        // Dữ liệu gửi đi là một object chứa:
+        // - 'do': 'hide_announcement' (thao tác là ẩn thông báo)
+        // - 'id': Giá trị ID của thông báo (lấy từ data-id)
+        // Sau khi server trả về phản hồi, thực hiện function với tham số response:
+
         /* check the response */
         if (response.callback) {
           eval(response.callback);
         }
+        // Kiểm tra nếu phản hồi từ server (response) có thuộc tính 'callback'
+        // Nếu có, sử dụng hàm eval() để thực thi chuỗi mã JavaScript trong response.callback
+        // (Cảnh báo: eval() có thể gây rủi ro bảo mật nếu dữ liệu từ server không được kiểm soát chặt chẽ)
+
       }, 'json')
+        // Chỉ định rằng phản hồi từ server được mong đợi ở định dạng JSON
+
         .fail(function () {
+          // Nếu yêu cầu POST thất bại (do lỗi mạng, server, v.v.), thực hiện function này:
+
           modal('#modal-message', { title: __['Error'], message: __['There is something that went wrong!'] });
+          // Hiển thị một cửa sổ modal (popup) với ID '#modal-message'
+          // - Tiêu đề: __['Error'] (dịch là "Lỗi")
+          // - Nội dung: __['There is something that went wrong!'] (dịch là "Có điều gì đó đã xảy ra không đúng!")
         });
+      // Kết thúc xử lý lỗi của $.post
+
       /* hide the confimation */
       $('#modal').modal('hide');
-    });
-  });
+      // Ẩn hộp thoại xác nhận (modal) với ID '#modal' sau khi hoàn tất thao tác
+      // Điều này đảm bảo rằng cửa sổ xác nhận không còn hiển thị trên giao diện
 
+    });
+    // Kết thúc function của confirm
+
+  });
+  // Kết thúc sự kiện click
 
   // handle daytime messages
   /* hide */
   $('body').on('click', '.js_daytime-remover', function () {
+    // Gắn sự kiện "click" vào toàn bộ body, lắng nghe khi có phần tử nào có class 'js_daytime-remover' được nhấp vào
+    // Khi nhấp vào, thực hiện function sau:
+
     var daytime_message = $(this).parents('.card');
+    // Lấy phần tử cha gần nhất có class 'card' của phần tử được nhấp (ở đây là thông báo ban ngày - daytime message)
+    // Lưu vào biến daytime_message để sử dụng sau
+
     confirm(__['Delete'], __['Are you sure you want to delete this?'], function () {
+      // Hiển thị một hộp thoại xác nhận (confirm) với tiêu đề là __['Delete'] (dịch là "Xóa")
+      // và nội dung là __['Are you sure you want to delete this?'] (dịch là "Bạn có chắc chắn muốn xóa cái này không?")
+      // Nếu người dùng đồng ý (nhấn OK), thực hiện function bên trong:
+
       /* remove the daytime message */
       daytime_message.fadeOut();
+      // Ẩn dần (fadeOut) phần tử thông báo ban ngày (daytime_message) khỏi giao diện
+
       $.post(api['posts/reaction'], { 'do': 'hide_daytime_message', 'id': '1' }, function (response) {
+        // Gửi một yêu cầu POST đến API tại đường dẫn api['posts/reaction']
+        // Dữ liệu gửi đi là một object chứa:
+        // - 'do': 'hide_daytime_message' (thao tác là ẩn thông báo ban ngày)
+        // - 'id': '1' (ID của thông báo, ở đây mặc định là 1)
+        // Sau khi gửi thành công, thực hiện function với tham số response (phản hồi từ server):
+
         /* check the response */
         if (response.callback) {
           eval(response.callback);
         }
+        // Kiểm tra nếu response có thuộc tính 'callback'
+        // Nếu có, sử dụng eval() để thực thi chuỗi mã JavaScript trong response.callback
+        // (Cảnh báo: Sử dụng eval() có thể nguy hiểm nếu không kiểm soát được dữ liệu đầu vào)
+
       }, 'json')
         .fail(function () {
+          // Nếu yêu cầu POST thất bại (lỗi server hoặc mạng), thực hiện function này:
+
           modal('#modal-message', { title: __['Error'], message: __['There is something that went wrong!'] });
+          // Hiển thị một modal (cửa sổ popup) với ID '#modal-message'
+          // Tiêu đề của modal là __['Error'] (dịch là "Lỗi")
+          // Nội dung thông báo là __['There is something that went wrong!'] (dịch là "Có điều gì đó đã xảy ra không đúng!")
         });
+      // Kết thúc xử lý thất bại của $.post
+
       /* hide the confimation */
       $('#modal').modal('hide');
+      // Ẩn modal xác nhận (có ID là '#modal') sau khi hoàn tất
+      // Đảm bảo rằng hộp thoại xác nhận đã được đóng
+
     });
+    // Kết thúc function của confirm
   });
+  // Kết thúc sự kiện click
 
 
   // handle forums
