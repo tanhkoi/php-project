@@ -62,11 +62,6 @@
               <i class="far fa-image fa-lg fa-fw js_x-uploader" data-handle="chat"></i>
             </li>
           {/if}
-          {if $system['voice_notes_chat_enabled']}
-            <li class="x-form-tools-voice js_chat-voice-notes-toggle">
-              <i class="fas fa-microphone fa-lg fa-fw"></i>
-            </li>
-          {/if}
           <li class="x-form-tools-emoji js_emoji-menu-toggle">
             <i class="far fa-smile-wink fa-lg fa-fw"></i>
           </li>

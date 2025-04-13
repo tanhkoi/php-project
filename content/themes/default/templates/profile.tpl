@@ -193,9 +193,6 @@
 
               <!-- poke & report & block menu -->
               <div class="d-inline-block dropdown">
-                <button type="button" class="btn btn-icon rounded-pill btn-light" data-bs-toggle="dropdown" data-display="static">
-                  <i class="fa fa-ellipsis-v fa-fw"></i>
-                </button>
                 <div class="dropdown-menu dropdown-menu-end action-dropdown-menu">
                   <!-- poke -->
                   {if $system['pokes_enabled'] && !$profile['i_poked']}
