@@ -2640,23 +2640,69 @@ $(function () {
     });
   });
   /* pin photo */
+  // Bình luận cũ: Đánh dấu đây là phần xử lý ghim ảnh (pin photo)
+  // Bình luận mới: Phần này xử lý hành động ghim một ảnh trong album để nổi bật hoặc cố định nó
+
   $('body').on('click', '.js_pin-photo', function (e) {
+    // Bình luận mới: Gắn sự kiện "click" vào toàn bộ body, lắng nghe khi có phần tử nào có class 'js_pin-photo' được nhấp vào
+    // Bình luận mới: Khi nhấp vào, thực hiện function với tham số e (đối tượng sự kiện)
+
     e.stopPropagation();
+    // Bình luận mới: Ngăn chặn sự kiện click lan truyền (bubble) lên các phần tử cha
+    // Bình luận mới: Điều này đảm bảo rằng sự kiện chỉ ảnh hưởng đến phần tử hiện tại, không kích hoạt các sự kiện click của các phần tử cha
+
     e.preventDefault();
+    // Bình luận mới: Ngăn chặn hành động mặc định của sự kiện (ví dụ: nếu phần tử là thẻ <a>, ngăn không cho trình duyệt chuyển hướng)
+    // Bình luận mới: Đảm bảo rằng hành động chỉ được xử lý bởi mã JavaScript
+
     var _this = $(this);
+    // Bình luận mới: Lưu tham chiếu đến phần tử được nhấp (có class 'js_pin-photo') vào biến _this
+    // Bình luận mới: Sử dụng $(this) để biến phần tử DOM thành đối tượng jQuery, giúp dễ thao tác
+
     var id = $(this).data('id');
+    // Bình luận mới: Lấy giá trị của thuộc tính data-id từ phần tử được nhấp
+    // Bình luận mới: Thuộc tính này chứa ID của ảnh cần ghim, được gửi lên server để xử lý
+    // Bình luận mới: Lưu vào biến id
+
     $.post(api['albums/action'], { 'do': 'pin_photo', 'id': id }, function (response) {
+      // Bình luận mới: Gửi một yêu cầu POST đến API tại đường dẫn api['albums/action']
+      // Bình luận mới: Dữ liệu gửi đi là một object chứa:
+      // - 'do': 'pin_photo' (thao tác là ghim ảnh)
+      // - 'id': Giá trị ID của ảnh (lấy từ data-id)
+      // Bình luận mới: Sau khi server trả về phản hồi, thực hiện function với tham số response (phản hồi từ server)
+
       /* check the response */
+      // Bình luận cũ: Kiểm tra phản hồi từ server
       if (response.callback) {
         eval(response.callback);
-      } else {
+      }
+      // Bình luận mới: Kiểm tra nếu phản hồi từ server (response) có thuộc tính 'callback'
+      // Bình luận mới: Nếu có, sử dụng hàm eval() để thực thi chuỗi mã JavaScript trong response.callback
+      // Bình luận mới: (Cảnh báo: eval() có thể gây rủi ro bảo mật nếu dữ liệu từ server không được kiểm soát chặt chẽ)
+
+      else {
         _this.removeClass('js_pin-photo').addClass('js_unpin-photo pinned');
       }
+      // Bình luận mới: Nếu không có callback, thực hiện cập nhật giao diện phía client:
+      // Bình luận mới: - Xóa class 'js_pin-photo' khỏi phần tử _this
+      // Bình luận mới: - Thêm các class 'js_unpin-photo' và 'pinned' vào phần tử _this
+      // Bình luận mới: Điều này thay đổi trạng thái giao diện từ "có thể ghim" thành "đã ghim" và cho phép bỏ ghim
+
     }, 'json')
+      // Bình luận mới: Chỉ định rằng phản hồi từ server được mong đợi ở định dạng JSON
+
       .fail(function () {
+        // Bình luận mới: Nếu yêu cầu POST thất bại (do lỗi mạng, server, v.v.), thực hiện function này:
+
         modal('#modal-message', { title: __['Error'], message: __['There is something that went wrong!'] });
+        // Bình luận mới: Hiển thị một cửa sổ modal (popup) với ID '#modal-message'
+        // Bình luận mới: - Tiêu đề: __['Error'] (dịch là "Lỗi")
+        // Bình luận mới: - Nội dung: __['There is something that went wrong!'] (dịch là "Có điều gì đó đã xảy ra không đúng!")
       });
+    // Bình luận mới: Kết thúc xử lý lỗi của $.post
+
   });
+  // Bình luận mới: Kết thúc sự kiện click
   /* unpin photo */
   $('body').on('click', '.js_unpin-photo', function (e) {
     // Gắn sự kiện "click" vào toàn bộ body, lắng nghe khi có phần tử nào có class 'js_unpin-photo' được nhấp vào
