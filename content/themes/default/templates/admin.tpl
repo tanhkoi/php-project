@@ -124,123 +124,23 @@
             <!-- Blogs -->
 
             <!-- Offers -->
-            <li {if $view == "offers"}class="active" {/if}>
-              <a href="#offers" data-bs-toggle="collapse" {if $view == "offers"}aria-expanded="true" {/if}>
-                <i class="fa fa-tag fa-lg fa-fw mr10" style="color: #F44336"></i>{__("Offers")}
-              </a>
-              <div class='collapse {if $view == "offers"}show{/if}' id="offers">
-                <ul>
-                  <li {if $view == "offers" && $sub_view == ""}class="active" {/if}>
-                    <a href="{$system['system_url']}/{$control_panel['url']}/offers">
-                      {__("List Offers")}
-                    </a>
-                  </li>
-                  <li {if $view == "offers" && $sub_view == "categories"}class="active" {/if}>
-                    <a href="{$system['system_url']}/{$control_panel['url']}/offers/categories">
-                      {__("List Categories")}
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </li>
+            
             <!-- Offers -->
 
             <!-- Jobs -->
-            <li {if $view == "jobs"}class="active" {/if}>
-              <a href="#jobs" data-bs-toggle="collapse" {if $view == "jobs"}aria-expanded="true" {/if}>
-                <i class="fa fa-briefcase fa-lg fa-fw mr10" style="color: #F44336"></i>{__("Jobs")}
-              </a>
-              <div class='collapse {if $view == "jobs"}show{/if}' id="jobs">
-                <ul>
-                  <li {if $view == "jobs" && $sub_view == ""}class="active" {/if}>
-                    <a href="{$system['system_url']}/{$control_panel['url']}/jobs">
-                      {__("List Jobs")}
-                    </a>
-                  </li>
-                  <li {if $view == "jobs" && $sub_view == "categories"}class="active" {/if}>
-                    <a href="{$system['system_url']}/{$control_panel['url']}/jobs/categories">
-                      {__("List Categories")}
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </li>
+            
             <!-- Jobs -->
 
             <!-- Forums -->
-            <li {if $view == "forums"}class="active" {/if}>
-              <a href="#forums" data-bs-toggle="collapse" {if $view == "forums"}aria-expanded="true" {/if}>
-                <i class="fa fa-comments fa-lg fa-fw mr10" style="color: #F44336"></i>{__("Forums")}
-              </a>
-              <div class='collapse {if $view == "forums"}show{/if}' id="forums">
-                <ul>
-                  <li {if $view == "forums" && $sub_view == ""}class="active" {/if}>
-                    <a href="{$system['system_url']}/{$control_panel['url']}/forums">
-                      {__("List Forums")}
-                    </a>
-                  </li>
-                  <li {if $view == "forums" && $sub_view == "threads"}class="active" {/if}>
-                    <a href="{$system['system_url']}/{$control_panel['url']}/forums/threads">
-                      {__("List Threads")}
-                    </a>
-                  </li>
-                  <li {if $view == "forums" && $sub_view == "replies"}class="active" {/if}>
-                    <a href="{$system['system_url']}/{$control_panel['url']}/forums/replies">
-                      {__("List Replies")}
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </li>
+            
             <!-- Forums -->
 
             <!-- Movies -->
-            <li {if $view == "movies"}class="active" {/if}>
-              <a href="#movies" data-bs-toggle="collapse" {if $view == "movies"}aria-expanded="true" {/if}>
-                <i class="fa fa-film fa-lg fa-fw mr10" style="color: #F44336"></i>{__("Movies")}
-              </a>
-              <div class='collapse {if $view == "movies"}show{/if}' id="movies">
-                <ul>
-                  <li {if $view == "movies" && $sub_view == ""}class="active" {/if}>
-                    <a href="{$system['system_url']}/{$control_panel['url']}/movies">
-                      {__("List Movies")}
-                    </a>
-                  </li>
-                  <li {if $view == "movies" && $sub_view == "genres"}class="active" {/if}>
-                    <a href="{$system['system_url']}/{$control_panel['url']}/movies/genres">
-                      {__("List Genres")}
-                    </a>
-                  </li>
-                  <li {if $view == "movies" && $sub_view == "payments"}class="active" {/if}>
-                    <a href="{$system['system_url']}/{$control_panel['url']}/movies/payments">
-                      {__("List Payments")}
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </li>
+            
             <!-- Movies -->
 
             <!-- Games -->
-            <li {if $view == "games"}class="active" {/if}>
-              <a href="#games" data-bs-toggle="collapse" {if $view == "games"}aria-expanded="true" {/if}>
-                <i class="fa fa-gamepad fa-lg fa-fw mr10" style="color: #F44336"></i>{__("Games")}
-              </a>
-              <div class='collapse {if $view == "games"}show{/if}' id="games">
-                <ul>
-                  <li {if $view == "games" && $sub_view == ""}class="active" {/if}>
-                    <a href="{$system['system_url']}/{$control_panel['url']}/games">
-                      {__("List Games")}
-                    </a>
-                  </li>
-                  <li {if $view == "games" && $sub_view == "genres"}class="active" {/if}>
-                    <a href="{$system['system_url']}/{$control_panel['url']}/games/genres">
-                      {__("List Genres")}
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </li>
+            
             <!-- Games -->
 
           </ul>
