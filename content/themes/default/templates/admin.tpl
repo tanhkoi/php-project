@@ -22,138 +22,6 @@
               </a>
             </li>
             <!-- Dashboard -->
-
-            {if $user->_is_admin}
-              <!-- Settings -->
-              <li {if $view == "settings"}class="active" {/if}>
-                <a href="#settings" data-bs-toggle="collapse" {if $view == "settings"}aria-expanded="true" {/if}>
-                  <i class="fa fa-cog fa-lg fa-fw mr10" style="color: #5e72e4"></i>{__("Settings")}
-                </a>
-                <div class='collapse {if $view == "settings"}show{/if}' id="settings">
-                  <ul>
-                    <li {if $view == "settings" && $sub_view == ""}class="active" {/if}>
-                      <a href="{$system['system_url']}/{$control_panel['url']}/settings">
-                        <i class="fa fa-cogs fa-lg fa-fw mr10"></i>{__("System Settings")}
-                      </a>
-                    </li>
-                    <li {if $view == "settings" && $sub_view == "posts"}class="active" {/if}>
-                      <a href="{$system['system_url']}/{$control_panel['url']}/settings/posts">
-                        <i class="fa fa-comment-alt fa-lg fa-fw mr10"></i>{__("Posts Settings")}
-                      </a>
-                    </li>
-                    <li {if $view == "settings" && $sub_view == "registration"}class="active" {/if}>
-                      <a href="{$system['system_url']}/{$control_panel['url']}/settings/registration">
-                        <i class="fa fa-sign-in-alt fa-lg fa-fw mr10"></i>{__("Registration Settings")}
-                      </a>
-                    </li>
-                    <li {if $view == "settings" && $sub_view == "accounts"}class="active" {/if}>
-                      <a href="{$system['system_url']}/{$control_panel['url']}/settings/accounts">
-                        <i class="fa fa-users-cog fa-lg fa-fw mr10"></i>{__("Accounts Settings")}
-                      </a>
-                    </li>
-                    <li {if $view == "settings" && $sub_view == "email"}class="active" {/if}>
-                      <a href="{$system['system_url']}/{$control_panel['url']}/settings/email">
-                        <i class="fa fa-envelope-open fa-lg fa-fw mr10"></i>{__("Email Settings")}
-                      </a>
-                    </li>
-                    <li {if $view == "settings" && $sub_view == "sms"}class="active" {/if}>
-                      <a href="{$system['system_url']}/{$control_panel['url']}/settings/sms">
-                        <i class="fa fa-mobile fa-lg fa-fw mr10"></i>{__("SMS Settings")}
-                      </a>
-                    </li>
-                    <li {if $view == "settings" && $sub_view == "notifications"}class="active" {/if}>
-                      <a href="{$system['system_url']}/{$control_panel['url']}/settings/notifications">
-                        <i class="fa fa-bell fa-lg fa-fw mr10"></i>{__("Notifications Settings")}
-                      </a>
-                    </li>
-                    <li {if $view == "settings" && $sub_view == "chat"}class="active" {/if}>
-                      <a href="{$system['system_url']}/{$control_panel['url']}/settings/chat">
-                        <i class="fa fa-comments fa-lg fa-fw mr10"></i>{__("Chat Settings")}
-                      </a>
-                    </li>
-                    <li {if $view == "settings" && $sub_view == "live"}class="active" {/if}>
-                      <a href="{$system['system_url']}/{$control_panel['url']}/settings/live">
-                        <i class="fa fa-signal fa-lg fa-fw mr10"></i>{__("Live Stream Settings")}
-                      </a>
-                    </li>
-                    <li {if $view == "settings" && $sub_view == "uploads"}class="active" {/if}>
-                      <a href="{$system['system_url']}/{$control_panel['url']}/settings/uploads">
-                        <i class="fa fa-upload fa-lg fa-fw mr10"></i>{__("Uploads Settings")}
-                      </a>
-                    </li>
-                    <li {if $view == "settings" && $sub_view == "payments"}class="active" {/if}>
-                      <a href="{$system['system_url']}/{$control_panel['url']}/settings/payments">
-                        <i class="fa fa-credit-card fa-lg fa-fw mr10"></i>{__("Payments Settings")}
-                      </a>
-                    </li>
-                    <li {if $view == "settings" && $sub_view == "security"}class="active" {/if}>
-                      <a href="{$system['system_url']}/{$control_panel['url']}/settings/security">
-                        <i class="fa fa-shield-alt fa-lg fa-fw mr10"></i>{__("Security Settings")}
-                      </a>
-                    </li>
-                    <li {if $view == "settings" && $sub_view == "limits"}class="active" {/if}>
-                      <a href="{$system['system_url']}/{$control_panel['url']}/settings/limits">
-                        <i class="fa fa-tachometer-alt fa-lg fa-fw mr10"></i>{__("Limits Settings")}
-                      </a>
-                    </li>
-                    <li {if $view == "settings" && $sub_view == "analytics"}class="active" {/if}>
-                      <a href="{$system['system_url']}/{$control_panel['url']}/settings/analytics">
-                        <i class="fa fa-chart-pie fa-lg fa-fw mr10"></i>{__("Analytics Settings")}
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-              <!-- Settings -->
-
-              <!-- Themes -->
-              <li {if $view == "themes"}class="active" {/if}>
-                <a href="{$system['system_url']}/{$control_panel['url']}/themes">
-                  <i class="fa fa-desktop fa-lg fa-fw mr10" style="color: #5e72e4"></i>{__("Themes")}
-                </a>
-              </li>
-              <!-- Themes -->
-
-              <!-- Design -->
-              <li {if $view == "design"}class="active" {/if}>
-                <a href="{$system['system_url']}/{$control_panel['url']}/design">
-                  <i class="fa fa-paint-brush fa-lg fa-fw mr10" style="color: #5e72e4"></i>{__("Design")}
-                </a>
-              </li>
-              <!-- Design -->
-
-              <!-- Languages -->
-              <li {if $view == "languages"}class="active" {/if}>
-                <a href="{$system['system_url']}/{$control_panel['url']}/languages">
-                  <i class="fa fa-language fa-lg fa-fw mr10" style="color: #5e72e4"></i>{__("Languages")}
-                </a>
-              </li>
-              <!-- Languages -->
-
-              <!-- Countries -->
-              <li {if $view == "countries"}class="active" {/if}>
-                <a href="{$system['system_url']}/{$control_panel['url']}/countries">
-                  <i class="fa fa-globe fa-lg fa-fw mr10" style="color: #5e72e4"></i>{__("Countries")}
-                </a>
-              </li>
-              <!-- Countries -->
-
-              <!-- Currencies -->
-              <li {if $view == "currencies"}class="active" {/if}>
-                <a href="{$system['system_url']}/{$control_panel['url']}/currencies">
-                  <i class="fa fa-money-bill-alt fa-lg fa-fw mr10" style="color: #5e72e4"></i>{__("Currencies")}
-                </a>
-              </li>
-              <!-- Currencies -->
-
-              <!-- Genders -->
-              <li {if $view == "genders"}class="active" {/if}>
-                <a href="{$system['system_url']}/{$control_panel['url']}/genders">
-                  <i class="fa fa-venus-mars fa-lg fa-fw mr10" style="color: #5e72e4"></i>{__("Genders")}
-                </a>
-              </li>
-              <!-- Genders -->
-            {/if}
           </ul>
         </div>
       </div>
@@ -179,24 +47,9 @@
                         {__("List Users")}
                       </a>
                     </li>
-                    <li {if $view == "users" && $sub_view == "moderators"}class="active" {/if}>
-                      <a href="{$system['system_url']}/{$control_panel['url']}/users/moderators">
-                        {__("List Moderators")}
-                      </a>
-                    </li>
                     <li {if $view == "users" && $sub_view == "admins"}class="active" {/if}>
                       <a href="{$system['system_url']}/{$control_panel['url']}/users/admins">
                         {__("List Admins")}
-                      </a>
-                    </li>
-                    <li {if $view == "users" && $sub_view == "online"}class="active" {/if}>
-                      <a href="{$system['system_url']}/{$control_panel['url']}/users/online">
-                        {__("List Online")}
-                      </a>
-                    </li>
-                    <li {if $view == "users" && $sub_view == "banned"}class="active" {/if}>
-                      <a href="{$system['system_url']}/{$control_panel['url']}/users/banned">
-                        {__("List Banned")}
                       </a>
                     </li>
                   </ul>
@@ -205,25 +58,6 @@
               <!-- Users -->
             {/if}
 
-            {if $user->_is_admin}
-              <!-- Users Groups -->
-              <li {if $view == "users_groups"}class="active" {/if}>
-                <a href="{$system['system_url']}/{$control_panel['url']}/users_groups">
-                  <i class="fa fa-users fa-lg fa-fw mr10" style="color: #9C27B0"></i>{__("Users Groups")}
-                </a>
-              </li>
-              <!-- Users Groups -->
-            {/if}
-
-            {if $user->_is_admin}
-              <!-- Permissions Groups -->
-              <li {if $view == "permissions_groups"}class="active" {/if}>
-                <a href="{$system['system_url']}/{$control_panel['url']}/permissions_groups">
-                  <i class="fa fa-key fa-lg fa-fw mr10" style="color: #9C27B0"></i>{__("Permissions Groups")}
-                </a>
-              </li>
-              <!-- Permissions Groups -->
-            {/if}
           </ul>
         </div>
       </div>
@@ -250,80 +84,21 @@
                       {__("List Posts")}
                     </a>
                   </li>
-                  <li {if $view == "posts" && $sub_view == "videos_categories"}class="active" {/if}>
-                    <a href="{$system['system_url']}/{$control_panel['url']}/posts/videos_categories">
-                      {__("List Videos Categories")}
-                    </a>
-                  </li>
                 </ul>
               </div>
             </li>
             <!-- Posts -->
 
             <!-- Pages -->
-            <li {if $view == "pages"}class="active" {/if}>
-              <a href="#pages" data-bs-toggle="collapse" {if $view == "pages"}aria-expanded="true" {/if}>
-                <i class="fa fa-flag fa-lg fa-fw mr10" style="color: #F44336"></i>{__("Pages")}
-              </a>
-              <div class='collapse {if $view == "pages"}show{/if}' id="pages">
-                <ul>
-                  <li {if $view == "pages" && $sub_view == ""}class="active" {/if}>
-                    <a href="{$system['system_url']}/{$control_panel['url']}/pages">
-                      {__("List Pages")}
-                    </a>
-                  </li>
-                  <li {if $view == "pages" && $sub_view == "categories"}class="active" {/if}>
-                    <a href="{$system['system_url']}/{$control_panel['url']}/pages/categories">
-                      {__("List Categories")}
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </li>
+            
             <!-- Pages -->
 
             <!-- Groups -->
-            <li {if $view == "groups"}class="active" {/if}>
-              <a href="#groups" data-bs-toggle="collapse" {if $view == "groups"}aria-expanded="true" {/if}>
-                <i class="fa fa-users fa-lg fa-fw mr10" style="color: #F44336"></i>{__("Groups")}
-              </a>
-              <div class='collapse {if $view == "groups"}show{/if}' id="groups">
-                <ul>
-                  <li {if $view == "groups" && $sub_view == ""}class="active" {/if}>
-                    <a href="{$system['system_url']}/{$control_panel['url']}/groups">
-                      {__("List Groups")}
-                    </a>
-                  </li>
-                  <li {if $view == "groups" && $sub_view == "categories"}class="active" {/if}>
-                    <a href="{$system['system_url']}/{$control_panel['url']}/groups/categories">
-                      {__("List Categories")}
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </li>
+            
             <!-- Groups -->
 
             <!-- Events -->
-            <li {if $view == "events"}class="active" {/if}>
-              <a href="#events" data-bs-toggle="collapse" {if $view == "events"}aria-expanded="true" {/if}>
-                <i class="fa fa-calendar fa-lg fa-fw mr10" style="color: #F44336"></i>{__("Events")}
-              </a>
-              <div class='collapse {if $view == "events"}show{/if}' id="events">
-                <ul>
-                  <li {if $view == "events" && $sub_view == ""}class="active" {/if}>
-                    <a href="{$system['system_url']}/{$control_panel['url']}/events">
-                      {__("List Events")}
-                    </a>
-                  </li>
-                  <li {if $view == "events" && $sub_view == "categories"}class="active" {/if}>
-                    <a href="{$system['system_url']}/{$control_panel['url']}/events/categories">
-                      {__("List Categories")}
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </li>
+            
             <!-- Events -->
 
             <!-- Blogs -->
