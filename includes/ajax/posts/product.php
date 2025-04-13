@@ -2,9 +2,6 @@
 
 /**
  * ajax -> posts -> product
- * 
- * 
- * 
  */
 
 // fetch bootstrap
@@ -132,12 +129,11 @@ try {
       // publish
       $post = $user->publisher($inputs);
 
-      // return
       $return['callback'] = "window.location = '" . $system['system_url'] . "/posts/" . $post['post_id'] . "';";
       break;
 
     case 'edit':
-      // valid inputs
+      /* valid inputs */
       if (!isset($_GET['post_id']) || !is_numeric($_GET['post_id'])) {
         _error(400);
       }

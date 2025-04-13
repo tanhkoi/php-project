@@ -2,9 +2,6 @@
 
 /**
  * ajax -> posts -> post
- * 
- * 
- * 
  */
 
 // fetch bootstrap
@@ -209,7 +206,7 @@ try {
       modal("ERROR", __("Error"), __("Paid post description is more than 1000 characters"));
     }
   }
-  /* prepare inputs */
+  //prepare inputs
   $inputs['handle'] = $_POST['handle'];
   $inputs['message'] = $_POST['message'];
   $inputs['link'] = $_POST['link'];
@@ -235,15 +232,10 @@ try {
 
   /* check if post is video && ffmpeg enabled */
   if ($post['post_type'] == "video" && $system['ffmpeg_enabled']) {
-    // [BACKGROUND PROCESS]
-    /* return async */
     return_json_async(['processing' => true]);
-    /* start ffmpeg converting */
     ffmpeg_convert($post['post_id'], $post['author_id'], $post['video']['source'], $post['video']['thumbnail']);
-    // return & exit
     return_json(['processing' => true]);
   } else {
-    // return & exit
     return_json($return);
   }
 } catch (Exception $e) {
