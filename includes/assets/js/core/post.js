@@ -2601,21 +2601,62 @@ $(function () {
 
 
   // handle album
+  // Bình luận cũ: Đánh dấu đây là phần xử lý album
+  // Bình luận mới: Phần này xử lý các hành động liên quan đến album, bao gồm xóa album
+
   /* delete album */
+  // Bình luận cũ: Đánh dấu đây là phần xử lý xóa album
+  // Bình luận mới: Phần này xử lý hành động xóa một album khi người dùng nhấp vào nút xóa
+
   $('body').on('click', '.js_delete-album', function () {
+    // Bình luận mới: Gắn sự kiện "click" vào toàn bộ body, lắng nghe khi có phần tử nào có class 'js_delete-album' được nhấp vào
+    // Bình luận mới: Khi nhấp vào, thực hiện function sau:
+
     var id = $(this).data('id');
+    // Bình luận mới: Lấy giá trị của thuộc tính data-id từ phần tử được nhấp
+    // Bình luận mới: Thuộc tính này chứa ID của album cần xóa, được gửi lên server để xử lý
+    // Bình luận mới: Lưu vào biến id
+
     confirm(__['Delete'], __['Are you sure you want to delete this?'], function () {
+      // Bình luận mới: Hiển thị một hộp thoại xác nhận (confirm) với:
+      // Bình luận mới: - Tiêu đề: __['Delete'] (dịch là "Xóa")
+      // Bình luận mới: - Nội dung: __['Are you sure you want to delete this?'] (dịch là "Bạn có chắc chắn muốn xóa cái này không?")
+      // Bình luận mới: Nếu người dùng nhấn OK (đồng ý), thực hiện function bên trong:
+
       $.post(api['albums/action'], { 'do': 'delete_album', 'id': id }, function (response) {
+        // Bình luận mới: Gửi một yêu cầu POST đến API tại đường dẫn api['albums/action']
+        // Bình luận mới: Dữ liệu gửi đi là một object chứa:
+        // Bình luận mới: - 'do': 'delete_album' (thao tác là xóa album)
+        // Bình luận mới: - 'id': Giá trị ID của album (lấy từ data-id)
+        // Bình luận mới: Sau khi server trả về phản hồi, thực hiện function với tham số response (phản hồi từ server)
+
         /* check the response */
+        // Bình luận cũ: Kiểm tra phản hồi từ server
         if (response.callback) {
           eval(response.callback);
         }
+        // Bình luận mới: Kiểm tra nếu phản hồi từ server (response) có thuộc tính 'callback'
+        // Bình luận mới: Nếu có, sử dụng hàm eval() để thực thi chuỗi mã JavaScript trong response.callback
+        // Bình luận mới: (Cảnh báo: eval() có thể gây rủi ro bảo mật nếu dữ liệu từ server không được kiểm soát chặt chẽ)
+
       }, 'json')
+        // Bình luận mới: Chỉ định rằng phản hồi từ server được mong đợi ở định dạng JSON
+
         .fail(function () {
+          // Bình luận mới: Nếu yêu cầu POST thất bại (do lỗi mạng, server, v.v.), thực hiện function này:
+
           modal('#modal-message', { title: __['Error'], message: __['There is something that went wrong!'] });
+          // Bình luận mới: Hiển thị một cửa sổ modal (popup) với ID '#modal-message'
+          // Bình luận mới: - Tiêu đề: __['Error'] (dịch là "Lỗi")
+          // Bình luận mới: - Nội dung: __['There is something that went wrong!'] (dịch là "Có điều gì đó đã xảy ra không đúng!")
         });
+      // Bình luận mới: Kết thúc xử lý lỗi của $.post
+
     });
+    // Bình luận mới: Kết thúc function của confirm
+
   });
+  // Bình luận mới: Kết thúc sự kiện click
 
 
   /* delete photo */
