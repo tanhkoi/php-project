@@ -2405,11 +2405,26 @@ $(function () {
     }
   });
   $('body').on('mouseleave', '.reactions-wrapper', function () {
+    // Bình luận mới: Gắn sự kiện "mouseleave" vào toàn bộ body, lắng nghe khi con trỏ chuột rời khỏi phần tử có class 'reactions-wrapper'
+    // Bình luận mới: Khi sự kiện xảy ra, thực hiện function sau:
+
     if (!is_iPad() && $(window).width() >= 970) {
+      // Bình luận mới: Kiểm tra hai điều kiện:
+      // Bình luận mới: - !is_iPad(): Thiết bị không phải là iPad (hàm is_iPad có thể được định nghĩa ở nơi khác để kiểm tra loại thiết bị)
+      // Bình luận mới: - $(window).width() >= 970: Chiều rộng cửa sổ trình duyệt lớn hơn hoặc bằng 970 pixel (tức là giao diện máy tính để bàn)
+      // Bình luận mới: Nếu cả hai điều kiện đúng, thực hiện khối lệnh bên trong:
+
       /* desktop -> hide the reactions */
       _hide_reactions(this);
+      // Bình luận cũ: Máy tính để bàn -> ẩn các phản ứng
+      // Bình luận mới: Gọi hàm _hide_reactions, truyền vào phần tử hiện tại (this)
+      // Bình luận mới: Hàm _hide_reactions (được định nghĩa ở nơi khác) chịu trách nhiệm ẩn menu phản ứng (reactions) khỏi giao diện
     }
+    // Bình luận mới: Kết thúc khối if (nếu không phải máy tính để bàn hoặc là iPad, không làm gì)
+
   });
+  // Bình luận mới: Kết thúc sự kiện mouseleave
+
   $('body').on('click', '.reactions-wrapper', function () {
     if (is_iPad() || $(window).width() < 970) {
       /* mobile -> toggle the reactions */
@@ -2465,6 +2480,15 @@ $(function () {
       }
     }
   });
+
+
+
+
+
+
+
+
+
   /* close reactions when clicked outside */
   $('body').on('click', function (e) {
     if ($(e.target).hasClass('reactions-wrapper') || $(e.target).parents('.reactions-wrapper').length > 0) {
