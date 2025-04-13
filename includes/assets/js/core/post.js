@@ -2703,23 +2703,57 @@ $(function () {
   // handle daytime messages
   /* hide */
   $('body').on('click', '.js_daytime-remover', function () {
+    // Gắn sự kiện "click" vào toàn bộ body, lắng nghe khi có phần tử nào có class 'js_daytime-remover' được nhấp vào
+    // Khi nhấp vào, thực hiện function sau:
+
     var daytime_message = $(this).parents('.card');
+    // Lấy phần tử cha gần nhất có class 'card' của phần tử được nhấp (ở đây là thông báo ban ngày - daytime message)
+    // Lưu vào biến daytime_message để sử dụng sau
+
     confirm(__['Delete'], __['Are you sure you want to delete this?'], function () {
+      // Hiển thị một hộp thoại xác nhận (confirm) với tiêu đề là __['Delete'] (dịch là "Xóa")
+      // và nội dung là __['Are you sure you want to delete this?'] (dịch là "Bạn có chắc chắn muốn xóa cái này không?")
+      // Nếu người dùng đồng ý (nhấn OK), thực hiện function bên trong:
+
       /* remove the daytime message */
       daytime_message.fadeOut();
+      // Ẩn dần (fadeOut) phần tử thông báo ban ngày (daytime_message) khỏi giao diện
+
       $.post(api['posts/reaction'], { 'do': 'hide_daytime_message', 'id': '1' }, function (response) {
+        // Gửi một yêu cầu POST đến API tại đường dẫn api['posts/reaction']
+        // Dữ liệu gửi đi là một object chứa:
+        // - 'do': 'hide_daytime_message' (thao tác là ẩn thông báo ban ngày)
+        // - 'id': '1' (ID của thông báo, ở đây mặc định là 1)
+        // Sau khi gửi thành công, thực hiện function với tham số response (phản hồi từ server):
+
         /* check the response */
         if (response.callback) {
           eval(response.callback);
         }
+        // Kiểm tra nếu response có thuộc tính 'callback'
+        // Nếu có, sử dụng eval() để thực thi chuỗi mã JavaScript trong response.callback
+        // (Cảnh báo: Sử dụng eval() có thể nguy hiểm nếu không kiểm soát được dữ liệu đầu vào)
+
       }, 'json')
         .fail(function () {
+          // Nếu yêu cầu POST thất bại (lỗi server hoặc mạng), thực hiện function này:
+
           modal('#modal-message', { title: __['Error'], message: __['There is something that went wrong!'] });
+          // Hiển thị một modal (cửa sổ popup) với ID '#modal-message'
+          // Tiêu đề của modal là __['Error'] (dịch là "Lỗi")
+          // Nội dung thông báo là __['There is something that went wrong!'] (dịch là "Có điều gì đó đã xảy ra không đúng!")
         });
+      // Kết thúc xử lý thất bại của $.post
+
       /* hide the confimation */
       $('#modal').modal('hide');
+      // Ẩn modal xác nhận (có ID là '#modal') sau khi hoàn tất
+      // Đảm bảo rằng hộp thoại xác nhận đã được đóng
+
     });
+    // Kết thúc function của confirm
   });
+  // Kết thúc sự kiện click
 
 
   // handle forums
