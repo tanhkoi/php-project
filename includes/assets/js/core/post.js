@@ -2560,44 +2560,132 @@ $(function () {
 
 
   // handle translator
+  // Bình luận cũ: Đánh dấu đây là phần xử lý chức năng dịch (translator)
+  // Bình luận mới: Phần này xử lý việc dịch văn bản của bài viết sang ngôn ngữ khác khi người dùng nhấp vào nút dịch
+
   $('body').on('click', '.js_translator', function () {
+    // Bình luận mới: Gắn sự kiện "click" vào toàn bộ body, lắng nghe khi có phần tử nào có class 'js_translator' được nhấp vào
+    // Bình luận mới: Khi nhấp vào, thực hiện function sau:
+
     /* check if translator is enabled */
     if (!post_translation_enabled) {
       return;
     }
+    // Bình luận cũ: Kiểm tra xem chức năng dịch có được bật không
+    // Bình luận mới: Kiểm tra biến post_translation_enabled (có thể là biến toàn cục) để xem chức năng dịch có được bật không
+    // Bình luận mới: Nếu không bật (false), thoát khỏi hàm ngay lập tức bằng return
+
     var _this = $(this);
+    // Bình luận mới: Lưu tham chiếu đến phần tử được nhấp (có class 'js_translator') vào biến _this
+    // Bình luận mới: Sử dụng $(this) để biến phần tử DOM thành đối tượng jQuery, giúp dễ thao tác
+
     var post = _this.closest('.post, .lightbox-post, .post-media');
+    // Bình luận mới: Tìm phần tử cha gần nhất có class 'post', 'lightbox-post', hoặc 'post-media'
+    // Bình luận mới: Đây là container của bài viết chứa văn bản cần dịch, lưu vào biến post
+
     var text = post.find('.post-text:first').text();
+    // Bình luận mới: Tìm phần tử đầu tiên có class 'post-text' trong post và lấy nội dung văn bản của nó
+    // Bình luận mới: Văn bản này là nội dung bài viết cần dịch, lưu vào biến text
+
     var to_lang = $('html').data('lang').substring(0, 2);
+    // Bình luận mới: Lấy giá trị của thuộc tính data-lang từ thẻ <html>
+    // Bình luận mới: Cắt lấy 2 ký tự đầu tiên (ví dụ: 'en' từ 'en-US') để xác định ngôn ngữ đích (ngôn ngữ cần dịch sang)
+    // Bình luận mới: Lưu vào biến to_lang
+
     /* check text */
     if (is_empty(text)) {
       _this.removeClass('text-link js_translator').text(__['Translated']);
       return;
     }
+    // Bình luận cũ: Kiểm tra văn bản
+    // Bình luận mới: Kiểm tra xem biến text có rỗng không (sử dụng hàm is_empty, có thể được định nghĩa ở nơi khác)
+    // Bình luận mới: Nếu text rỗng:
+    // Bình luận mới: - Xóa class 'text-link' và 'js_translator' khỏi phần tử _this
+    // Bình luận mới: - Thay đổi nội dung văn bản của _this thành __['Translated'] (dịch là "Đã dịch")
+    // Bình luận mới: - Thoát khỏi hàm bằng return
+
     /* detect language */
     $.get('https://translate.yandex.net/api/v1.5/tr.json/detect', { 'key': yandex_key, 'text': text }, function (response) {
+      // Bình luận cũ: Phát hiện ngôn ngữ
+      // Bình luận mới: Gửi một yêu cầu GET đến API của Yandex Translate để phát hiện ngôn ngữ của văn bản
+      // Bình luận mới: URL API: https://translate.yandex.net/api/v1.5/tr.json/detect
+      // Bình luận mới: Dữ liệu gửi đi:
+      // Bình luận mới: - 'key': yandex_key (khóa API của Yandex, có thể là biến toàn cục)
+      // Bình luận mới: - 'text': Văn bản cần phát hiện ngôn ngữ (biến text)
+      // Bình luận mới: Sau khi nhận phản hồi, thực hiện function với tham số response
+
       /* check the target langauge is current langauge */
       if (to_lang === response.lang) {
         _this.removeClass('text-link js_translator').text(__['Translated']);
         return;
       }
+      // Bình luận cũ: Kiểm tra xem ngôn ngữ đích có phải là ngôn ngữ hiện tại không
+      // Bình luận mới: Kiểm tra nếu ngôn ngữ đích (to_lang) trùng với ngôn ngữ của văn bản (response.lang)
+      // Bình luận mới: Nếu trùng (nghĩa là không cần dịch):
+      // Bình luận mới: - Xóa class 'text-link' và 'js_translator' khỏi phần tử _this
+      // Bình luận mới: - Thay đổi nội dung văn bản của _this thành __['Translated'] (dịch là "Đã dịch")
+      // Bình luận mới: - Thoát khỏi hàm bằng return
+
       /* translate */
       $.getJSON('https://translate.yandex.net/api/v1.5/tr.json/translate', { 'key': yandex_key, 'text': text, 'lang': to_lang }, function (response) {
+        // Bình luận cũ: Dịch văn bản
+        // Bình luận mới: Gửi một yêu cầu GET đến API của Yandex Translate để dịch văn bản
+        // Bình luận mới: URL API: https://translate.yandex.net/api/v1.5/tr.json/translate
+        // Bình luận mới: Dữ liệu gửi đi:
+        // Bình luận mới: - 'key': yandex_key (khóa API của Yandex)
+        // Bình luận mới: - 'text': Văn bản cần dịch (biến text)
+        // Bình luận mới: - 'lang': Ngôn ngữ đích (to_lang, ví dụ: 'en' hoặc 'vi')
+        // Bình luận mới: Sau khi nhận phản hồi, thực hiện function với tham số response
+        // Bình luận mới: Sử dụng $.getJSON để đảm bảo phản hồi được xử lý dưới dạng JSON
+
         /* check the response */
         _this.removeClass('text-link js_translator').text(__['Translated']);
+        // Bình luận cũ: Kiểm tra phản hồi
+        // Bình luận mới: Xóa class 'text-link' và 'js_translator' khỏi phần tử _this
+        // Bình luận mới: Thay đổi nội dung văn bản của _this thành __['Translated'] (dịch là "Đã dịch")
+        // Bình luận mới: Điều này cho thấy quá trình dịch đã hoàn tất
+
         post.find('.post-text-translation:first').text(response.text).show().addClass("x-notifier");
+        // Bình luận mới: Tìm phần tử đầu tiên có class 'post-text-translation' trong post
+        // Bình luận mới: - Cập nhật nội dung của phần tử này thành response.text (văn bản đã được dịch)
+        // Bình luận mới: - Hiển thị phần tử bằng show()
+        // Bình luận mới: - Thêm class 'x-notifier' (có thể là hiệu ứng thông báo, ví dụ: làm nổi bật văn bản dịch)
+
         setTimeout(function () {
           post.find('.post-text-translation:first').removeClass("x-notifier");
         }, '2500');
+        // Bình luận mới: Sau 2500ms (2.5 giây), thực hiện hàm:
+        // Bình luận mới: - Tìm lại phần tử 'post-text-translation' và xóa class 'x-notifier'
+        // Bình luận mới: Điều này làm mất hiệu ứng thông báo sau một khoảng thời gian ngắn
+
       }, 'json')
+        // Bình luận mới: Chỉ định rằng phản hồi từ API dịch được mong đợi ở định dạng JSON
+
         .fail(function () {
+          // Bình luận mới: Nếu yêu cầu GET đến API dịch thất bại (do lỗi mạng, server, v.v.), thực hiện function này:
+
           modal('#modal-message', { title: __['Error'], message: __['There is something that went wrong!'] });
+          // Bình luận mới: Hiển thị một cửa sổ modal (popup) với ID '#modal-message'
+          // Bình luận mới: - Tiêu đề: __['Error'] (dịch là "Lỗi")
+          // Bình luận mới: - Nội dung: __['There is something that went wrong!'] (dịch là "Có điều gì đó đã xảy ra không đúng!")
         });
+      // Bình luận mới: Kết thúc xử lý lỗi của $.getJSON
+
     }, 'json')
+      // Bình luận mới: Chỉ định rằng phản hồi từ API phát hiện ngôn ngữ được mong đợi ở định dạng JSON
+
       .fail(function () {
+        // Bình luận mới: Nếu yêu cầu GET đến API phát hiện ngôn ngữ thất bại, thực hiện function này:
+
         modal('#modal-message', { title: __['Error'], message: __['There is something that went wrong!'] });
+        // Bình luận mới: Hiển thị một cửa sổ modal (popup) với ID '#modal-message'
+        // Bình luận mới: - Tiêu đề: __['Error'] (dịch là "Lỗi")
+        // Bình luận mới: - Nội dung: __['There is something that went wrong!'] (dịch là "Có điều gì đó đã xảy ra không đúng!")
       });
+    // Bình luận mới: Kết thúc xử lý lỗi của $.get
+
   });
+  // Bình luận mới: Kết thúc sự kiện click
 
 
   // handle album
