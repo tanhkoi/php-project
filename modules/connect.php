@@ -38,36 +38,6 @@ try {
           }
           break;
 
-        case 'twitter':
-          if (!$system['twitter_login_enabled']) {
-            _error(404);
-          }
-          break;
-
-        case 'linkedin':
-          if (!$system['linkedin_login_enabled']) {
-            _error(404);
-          }
-          break;
-
-        case 'vkontakte':
-          if (!$system['vkontakte_login_enabled']) {
-            _error(404);
-          }
-          break;
-
-        case 'wordpress':
-          if (!$system['wordpress_login_enabled']) {
-            _error(404);
-          }
-          break;
-
-        case 'sngine':
-          if (!$system['sngine_login_enabled']) {
-            _error(404);
-          }
-          break;
-
         default:
           _error(404);
           break;
@@ -91,28 +61,7 @@ try {
             "Google" => [
               "enabled" => true,
               "keys"    => ["key" => $system['google_appid'], "secret" => $system['google_secret']],
-            ],
-            "Twitter" => [
-              "enabled" => true,
-              "keys"    => ["key" => $system['twitter_appid'], "secret" => $system['twitter_secret']],
-              "includeEmail" => true
-            ],
-            "Instagram" => [
-              "enabled" => true,
-              "keys"    => ["id" => $system['instagram_appid'], "secret" => $system['instagram_secret']],
-            ],
-            "LinkedIn" => [
-              "enabled" => true,
-              "keys"    => ["id" => $system['linkedin_appid'], "secret" => $system['linkedin_secret']],
-            ],
-            "Vkontakte" => [
-              "enabled" => true,
-              "keys"    => ["id" => $system['vkontakte_appid'], "secret" => $system['vkontakte_secret']],
-            ],
-            "WordPress" => [
-              "enabled" => true,
-              "keys"    => ["id" => $system['wordpress_appid'], "secret" => $system['wordpress_secret']],
-            ],
+            ]
           ],
         ];
 
