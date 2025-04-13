@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2025-04-13 09:19:37
+/* Smarty version 4.3.4, created on 2025-04-13 13:45:37
   from 'C:\xampp\htdocs\content\themes\default\templates\profile.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_67fb81a963fb27_38670736',
+  'unifunc' => 'content_67fbc0019168e7_67792590',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1a9ad2beb1f2d70a5a73ab2049527b7577000145' => 
     array (
       0 => 'C:\\xampp\\htdocs\\content\\themes\\default\\templates\\profile.tpl',
-      1 => 1744535975,
+      1 => 1744551936,
       2 => 'file',
     ),
   ),
@@ -41,7 +41,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:_footer.tpl' => 1,
   ),
 ),false)) {
-function content_67fb81a963fb27_38670736 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67fbc0019168e7_67792590 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:_head.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender('file:_header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -293,9 +293,6 @@ $_smarty_tpl->_subTemplateRender('file:_header.tpl', $_smarty_tpl->cache_id, $_s
 
               <!-- poke & report & block menu -->
               <div class="d-inline-block dropdown">
-                <button type="button" class="btn btn-icon rounded-pill btn-light" data-bs-toggle="dropdown" data-display="static">
-                  <i class="fa fa-ellipsis-v fa-fw"></i>
-                </button>
                 <div class="dropdown-menu dropdown-menu-end action-dropdown-menu">
                   <!-- poke -->
                   <?php if ($_smarty_tpl->tpl_vars['system']->value['pokes_enabled'] && !$_smarty_tpl->tpl_vars['profile']->value['i_poked']) {?>

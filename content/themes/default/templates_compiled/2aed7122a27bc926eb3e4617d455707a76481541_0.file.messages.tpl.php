@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-11-18 06:51:04
+/* Smarty version 4.3.4, created on 2025-04-13 13:38:16
   from 'C:\xampp\htdocs\content\themes\default\templates\messages.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_673ae3d8123682_98550049',
+  'unifunc' => 'content_67fbbe48813ee1_23788679',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2aed7122a27bc926eb3e4617d455707a76481541' => 
     array (
       0 => 'C:\\xampp\\htdocs\\content\\themes\\default\\templates\\messages.tpl',
-      1 => 1698150192,
+      1 => 1744551493,
       2 => 'file',
     ),
   ),
@@ -26,7 +26,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:_footer.tpl' => 1,
   ),
 ),false)) {
-function content_673ae3d8123682_98550049 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67fbbe48813ee1_23788679 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:_head.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender('file:_header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -170,11 +170,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 <?php if ($_smarty_tpl->tpl_vars['system']->value['chat_photos_enabled']) {?>
                   <li class="x-form-tools-attach">
                     <i class="far fa-image fa-lg fa-fw js_x-uploader" data-handle="chat"></i>
-                  </li>
-                <?php }?>
-                <?php if ($_smarty_tpl->tpl_vars['system']->value['voice_notes_chat_enabled']) {?>
-                  <li class="x-form-tools-voice js_chat-voice-notes-toggle">
-                    <i class="fas fa-microphone fa-lg fa-fw"></i>
                   </li>
                 <?php }?>
                 <li class="x-form-tools-emoji js_emoji-menu-toggle">

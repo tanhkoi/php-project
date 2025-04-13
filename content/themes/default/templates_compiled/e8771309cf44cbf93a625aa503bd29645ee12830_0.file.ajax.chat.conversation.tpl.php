@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-11-18 06:51:04
+/* Smarty version 4.3.4, created on 2025-04-13 13:40:19
   from 'C:\xampp\htdocs\content\themes\default\templates\ajax.chat.conversation.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_673ae3d830a557_19584483',
+  'unifunc' => 'content_67fbbec365ad72_23053017',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e8771309cf44cbf93a625aa503bd29645ee12830' => 
     array (
       0 => 'C:\\xampp\\htdocs\\content\\themes\\default\\templates\\ajax.chat.conversation.tpl',
-      1 => 1698149768,
+      1 => 1744551616,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:ajax.chat.conversation.messages.tpl' => 1,
   ),
 ),false)) {
-function content_673ae3d830a557_19584483 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67fbbec365ad72_23053017 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="card panel-messages" data-cid="<?php echo $_smarty_tpl->tpl_vars['conversation']->value['conversation_id'];?>
 " data-color="<?php echo $_smarty_tpl->tpl_vars['conversation']->value['color'];?>
 ">
@@ -143,19 +143,6 @@ function content_673ae3d830a557_19584483 (Smarty_Internal_Template $_smarty_tpl)
         <?php if ($_smarty_tpl->tpl_vars['system']->value['chat_photos_enabled']) {?>
           <li class="x-form-tools-attach">
             <i class="far fa-image fa-lg fa-fw js_x-uploader" data-handle="chat"></i>
-          </li>
-        <?php }?>
-        <?php if ($_smarty_tpl->tpl_vars['system']->value['voice_notes_chat_enabled']) {?>
-          <li class="x-form-tools-voice js_chat-voice-notes-toggle">
-            <i class="fas fa-microphone fa-lg fa-fw"></i>
-          </li>
-        <?php }?>
-        <li class="x-form-tools-emoji js_emoji-menu-toggle">
-          <i class="far fa-smile-wink fa-lg fa-fw"></i>
-        </li>
-        <?php if (!$_smarty_tpl->tpl_vars['conversation']->value['node_id']) {?>
-          <li class="x-form-tools-colors js_chat-colors-menu-toggle js_chat-color-me">
-            <i class="fa fa-circle fa-lg fa-fw"></i>
           </li>
         <?php }?>
         <li class="x-form-tools-post js_post-message">

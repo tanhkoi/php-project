@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-11-11 14:13:42
+/* Smarty version 4.3.4, created on 2025-04-13 13:34:06
   from 'C:\xampp\htdocs\content\themes\default\templates\search.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_673211165f1239_62533609',
+  'unifunc' => 'content_67fbbd4ed70f48_92573496',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6963a467fea0884b600f0196651e88fe9d5a445f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\content\\themes\\default\\templates\\search.tpl',
-      1 => 1692353816,
+      1 => 1744551244,
       2 => 'file',
     ),
   ),
@@ -33,7 +33,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:_footer.tpl' => 1,
   ),
 ),false)) {
-function content_673211165f1239_62533609 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67fbbd4ed70f48_92573496 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:_head.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender('file:_header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -101,18 +101,6 @@ echo $_smarty_tpl->tpl_vars['query']->value;?>
 </strong>
               </a>
             </li>
-            <?php if ($_smarty_tpl->tpl_vars['system']->value['blogs_enabled']) {?>
-              <li class="nav-item">
-                <a class="nav-link rounded-pill <?php if ($_smarty_tpl->tpl_vars['tab']->value == "articles") {?>active<?php }?>" href="<?php echo $_smarty_tpl->tpl_vars['system']->value['system_url'];?>
-/search/<?php if ($_smarty_tpl->tpl_vars['hashtag']->value) {?>hashtag/<?php }
-if ($_smarty_tpl->tpl_vars['query']->value) {
-echo $_smarty_tpl->tpl_vars['query']->value;?>
-/articles<?php }?>">
-                  <strong><?php echo __("Articles");?>
-</strong>
-                </a>
-              </li>
-            <?php }?>
             <li class="nav-item">
               <a class="nav-link rounded-pill <?php if ($_smarty_tpl->tpl_vars['tab']->value == "users") {?>active<?php }?>" href="<?php echo $_smarty_tpl->tpl_vars['system']->value['system_url'];?>
 /search/<?php if ($_smarty_tpl->tpl_vars['query']->value) {
@@ -122,39 +110,6 @@ echo $_smarty_tpl->tpl_vars['query']->value;?>
 </strong>
               </a>
             </li>
-            <?php if ($_smarty_tpl->tpl_vars['system']->value['pages_enabled']) {?>
-              <li class="nav-item">
-                <a class="nav-link rounded-pill <?php if ($_smarty_tpl->tpl_vars['tab']->value == "pages") {?>active<?php }?>" href="<?php echo $_smarty_tpl->tpl_vars['system']->value['system_url'];?>
-/search/<?php if ($_smarty_tpl->tpl_vars['query']->value) {
-echo $_smarty_tpl->tpl_vars['query']->value;?>
-/pages<?php }?>">
-                  <strong><?php echo __("Pages");?>
-</strong>
-                </a>
-              </li>
-            <?php }?>
-            <?php if ($_smarty_tpl->tpl_vars['system']->value['groups_enabled']) {?>
-              <li class="nav-item">
-                <a class="nav-link rounded-pill <?php if ($_smarty_tpl->tpl_vars['tab']->value == "groups") {?>active<?php }?>" href="<?php echo $_smarty_tpl->tpl_vars['system']->value['system_url'];?>
-/search/<?php if ($_smarty_tpl->tpl_vars['query']->value) {
-echo $_smarty_tpl->tpl_vars['query']->value;?>
-/groups<?php }?>">
-                  <strong><?php echo __("Groups");?>
-</strong>
-                </a>
-              </li>
-            <?php }?>
-            <?php if ($_smarty_tpl->tpl_vars['system']->value['events_enabled']) {?>
-              <li class="nav-item">
-                <a class="nav-link rounded-pill <?php if ($_smarty_tpl->tpl_vars['tab']->value == "events") {?>active<?php }?>" href="<?php echo $_smarty_tpl->tpl_vars['system']->value['system_url'];?>
-/search/<?php if ($_smarty_tpl->tpl_vars['query']->value) {
-echo $_smarty_tpl->tpl_vars['query']->value;?>
-/events<?php }?>">
-                  <strong><?php echo __("Events");?>
-</strong>
-                </a>
-              </li>
-            <?php }?>
           </ul>
           <!-- panel nav -->
 

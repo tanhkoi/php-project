@@ -1,27 +1,27 @@
 <?php
-/* Smarty version 4.3.4, created on 2025-04-13 08:27:38
+/* Smarty version 4.3.4, created on 2025-04-13 13:36:11
   from 'C:\xampp\htdocs\content\themes\default\templates\_js_templates.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_67fb757a51c4b4_17243607',
+  'unifunc' => 'content_67fbbdcbe71fe7_07681541',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e178dcb975fd0fcbe045eff2c34cd172576d31a4' => 
     array (
       0 => 'C:\\xampp\\htdocs\\content\\themes\\default\\templates\\_js_templates.tpl',
-      1 => 1744532833,
+      1 => 1744551368,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
-    'file:__svg_icons.tpl' => 53,
+    'file:__svg_icons.tpl' => 47,
   ),
 ),false)) {
-function content_67fb757a51c4b4_17243607 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67fbbdcbe71fe7_07681541 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\xampp\\htdocs\\vendor\\smarty\\smarty\\libs\\plugins\\modifier.number_format.php','function'=>'smarty_modifier_number_format',),));
 ?>
 <!-- Toasts --><div class="toast-container p-3 bottom-0 start-0 fixed-bottom"></div><!-- Toasts --><!-- Modals --><div id="modal" class="modal fade"><div class="modal-dialog"><div class="modal-content"><div class="modal-body"><div class="loader pt10 pb10"></div></div></div></div></div><?php echo '<script'; ?>
@@ -213,41 +213,7 @@ $_smarty_tpl->tpl_vars['sticker']->do_else = false;
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?></div></div></div><ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" href="#tab-emojis-{{id}}" data-bs-toggle="tab"><i class="fa fa-smile fa-fw mr5"></i><?php echo __("Emojis");?>
 </a></li><li class="nav-item"><a class="nav-link" href="#tab-stickers-{{id}}" data-bs-toggle="tab"><i class="fa fa-hand-peace fa-fw mr5"></i><?php echo __("Stickers");?>
 </a></li></ul></div><?php echo '</script'; ?>
-><!-- Emoji Menu --><!-- Chat --><?php if ($_smarty_tpl->tpl_vars['system']->value['chat_enabled']) {?><!-- Chat Sidebar --><div class="chat-sidebar <?php if (!$_smarty_tpl->tpl_vars['user']->value->_data['user_chat_enabled']) {?>disabled<?php }?>"><div class="chat-sidebar-content"><div class="js_scroller" data-slimScroll-height="100%"><?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['sidebar_friends']->value, '_user');
-$_smarty_tpl->tpl_vars['_user']->do_else = true;
-if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['_user']->value) {
-$_smarty_tpl->tpl_vars['_user']->do_else = false;
-?><div class="chat-avatar-wrapper clickable js_chat-start" data-uid="<?php echo $_smarty_tpl->tpl_vars['_user']->value['user_id'];?>
-" data-name="<?php if ($_smarty_tpl->tpl_vars['system']->value['show_usernames_enabled']) {
-echo $_smarty_tpl->tpl_vars['_user']->value['user_name'];
-} else {
-echo $_smarty_tpl->tpl_vars['_user']->value['user_firstname'];?>
- <?php echo $_smarty_tpl->tpl_vars['_user']->value['user_lastname'];
-}?>" data-link="<?php echo $_smarty_tpl->tpl_vars['_user']->value['user_name'];?>
-" data-picture="<?php echo $_smarty_tpl->tpl_vars['_user']->value['user_picture'];?>
-"><div class="chat-avatar"><img src="<?php echo $_smarty_tpl->tpl_vars['_user']->value['user_picture'];?>
-" alt="" /><i class="online-status fa fa-circle <?php if ($_smarty_tpl->tpl_vars['_user']->value['user_is_online']) {?>online<?php } else { ?>offline<?php }?>"></i></div><div class="last-seen"><?php if ($_smarty_tpl->tpl_vars['system']->value['chat_status_enabled'] && !$_smarty_tpl->tpl_vars['_user']->value['user_is_online']) {?><span class="js_moment" data-time="<?php echo $_smarty_tpl->tpl_vars['_user']->value['user_last_seen'];?>
-"><?php echo $_smarty_tpl->tpl_vars['_user']->value["user_last_seen"];?>
-</span><?php } else { ?><div class="pb10"></div><?php }?></div></div><?php
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?></div></div><div class="chat-sidebar-footer"><a class="btn btn-chat rounded-circle mb10 js_chat-new" href="<?php echo $_smarty_tpl->tpl_vars['system']->value['system_url'];?>
-/messages/new"><?php $_smarty_tpl->_subTemplateRender('file:__svg_icons.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('icon'=>"start_chat",'class'=>"main-icon",'width'=>"20px",'height'=>"20px"), 0, true);
-?></a><button class="btn btn-chat rounded-circle" data-bs-toggle="dropdown" data-display="static"><?php $_smarty_tpl->_subTemplateRender('file:__svg_icons.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('icon'=>"cog",'class'=>"main-icon",'width'=>"20px",'height'=>"20px"), 0, true);
-?></button><div class="dropdown-menu dropdown-menu-end action-dropdown-menu"><a class="dropdown-item" href="<?php echo $_smarty_tpl->tpl_vars['system']->value['system_url'];?>
-/settings/blocking"><div class="action"><?php $_smarty_tpl->_subTemplateRender('file:__svg_icons.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('icon'=>"blocking",'class'=>"main-icon mr10",'width'=>"20px",'height'=>"20px"), 0, true);
-echo __("Manage Blocking");?>
-</div><div class="action-desc"><?php echo __("Manage blocked users");?>
-</div></a><a class="dropdown-item" href="<?php echo $_smarty_tpl->tpl_vars['system']->value['system_url'];?>
-/settings/privacy"><div class="action"><?php $_smarty_tpl->_subTemplateRender('file:__svg_icons.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('icon'=>"privacy",'class'=>"main-icon mr10",'width'=>"20px",'height'=>"20px"), 0, true);
-echo __("Privacy Settings");?>
-</div><div class="action-desc"><?php echo __("Manage your privacy");?>
-</div></a><div class="dropdown-divider"></div><?php if ($_smarty_tpl->tpl_vars['user']->value->_data['user_chat_enabled']) {?><div class="dropdown-item pointer js_chat-toggle" data-status="on"><div class="action"><?php $_smarty_tpl->_subTemplateRender('file:__svg_icons.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('icon'=>"hide",'class'=>"main-icon mr10",'width'=>"20px",'height'=>"20px"), 0, true);
-echo __("Turn Off Chat");?>
-</div></div><?php } else { ?><div class="dropdown-item pointer js_chat-toggle" data-status="off"><div class="action"><?php $_smarty_tpl->_subTemplateRender('file:__svg_icons.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('icon'=>"unhide",'class'=>"main-icon mr10",'width'=>"20px",'height'=>"20px"), 0, true);
-echo __("Turn On Chat");?>
-</div></div><?php }?></div></div></div><!-- Chat Sidebar --><?php }
-echo '<script'; ?>
+><!-- Emoji Menu --><?php echo '<script'; ?>
  id="chat-box-new" type="text/template"><div class="chat-widget chat-box opened fresh"><!-- head --><div class="chat-widget-head"><!-- user-card --><div class="chat-user-card"><div class="name"><?php echo __("New Message");?>
 </div></div><!-- user-card --><!-- buttons--><div class="chat-head-btns"><span class="chat-head-btn js_chat-box-close"><?php $_smarty_tpl->_subTemplateRender('file:__svg_icons.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('icon'=>"close",'class'=>"main-icon",'width'=>"20px",'height'=>"20px"), 0, true);
 ?></span></div><!-- buttons--></div><!-- head --><!-- content --><div class="chat-widget-content"><div class="chat-conversations js_scroller"></div><div class="chat-to clearfix js_autocomplete-tags"><div class="to"><?php echo __("To");?>
