@@ -2659,22 +2659,64 @@ $(function () {
   });
   /* unpin photo */
   $('body').on('click', '.js_unpin-photo', function (e) {
+    // Gắn sự kiện "click" vào toàn bộ body, lắng nghe khi có phần tử nào có class 'js_unpin-photo' được nhấp vào
+    // Khi nhấp vào, thực hiện function với tham số e (đối tượng sự kiện)
+
     e.stopPropagation();
+    // Ngăn chặn sự kiện click lan truyền (bubble) lên các phần tử cha
+    // Điều này đảm bảo rằng sự kiện chỉ ảnh hưởng đến phần tử hiện tại, không kích hoạt các sự kiện click của các phần tử cha
+
     e.preventDefault();
+    // Ngăn chặn hành động mặc định của sự kiện (ví dụ: nếu phần tử là thẻ <a>, ngăn không cho trình duyệt chuyển hướng)
+    // Đảm bảo rằng hành động chỉ được xử lý bởi mã JavaScript
+
     var _this = $(this);
+    // Lưu tham chiếu đến phần tử được nhấp (có class 'js_unpin-photo') vào biến _this
+    // Sử dụng $(this) để biến phần tử DOM thành đối tượng jQuery, giúp dễ thao tác
+
     var id = $(this).data('id');
+    // Lấy giá trị của thuộc tính data-id từ phần tử được nhấp
+    // Thuộc tính này chứa ID của ảnh cần bỏ ghim, được gửi lên server để xử lý
+    // Lưu vào biến id
+
     $.post(api['albums/action'], { 'do': 'unpin_photo', 'id': id }, function (response) {
+      // Gửi một yêu cầu POST đến API tại đường dẫn api['albums/action']
+      // Dữ liệu gửi đi là một object chứa:
+      // - 'do': 'unpin_photo' (thao tác là bỏ ghim ảnh)
+      // - 'id': Giá trị ID của ảnh (lấy từ data-id)
+      // Sau khi server trả về phản hồi, thực hiện function với tham số response (phản hồi từ server)
+
       /* check the response */
       if (response.callback) {
         eval(response.callback);
-      } else {
+      }
+      // Kiểm tra nếu phản hồi từ server (response) có thuộc tính 'callback'
+      // Nếu có, sử dụng hàm eval() để thực thi chuỗi mã JavaScript trong response.callback
+      // (Cảnh báo: eval() có thể gây rủi ro bảo mật nếu dữ liệu từ server không được kiểm soát chặt chẽ)
+
+      else {
         _this.removeClass('js_unpin-photo pinned').addClass('js_pin-photo');
       }
+      // Nếu không có callback, thực hiện cập nhật giao diện phía client:
+      // - Xóa các class 'js_unpin-photo' và 'pinned' khỏi phần tử _this
+      // - Thêm class 'js_pin-photo' vào phần tử _this
+      // Điều này thay đổi trạng thái giao diện từ "bỏ ghim" thành "có thể ghim lại"
+
     }, 'json')
+      // Chỉ định rằng phản hồi từ server được mong đợi ở định dạng JSON
+
       .fail(function () {
+        // Nếu yêu cầu POST thất bại (do lỗi mạng, server, v.v.), thực hiện function này:
+
         modal('#modal-message', { title: __['Error'], message: __['There is something that went wrong!'] });
+        // Hiển thị một cửa sổ modal (popup) với ID '#modal-message'
+        // - Tiêu đề: __['Error'] (dịch là "Lỗi")
+        // - Nội dung: __['There is something that went wrong!'] (dịch là "Có điều gì đó đã xảy ra không đúng!")
       });
+    // Kết thúc xử lý lỗi của $.post
+
   });
+  // Kết thúc sự kiện click
 
 
   // handle announcment
