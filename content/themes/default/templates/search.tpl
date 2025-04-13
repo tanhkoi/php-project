@@ -50,39 +50,11 @@
                 <strong>{__("Posts")}</strong>
               </a>
             </li>
-            {if $system['blogs_enabled']}
-              <li class="nav-item">
-                <a class="nav-link rounded-pill {if $tab == "articles"}active{/if}" href="{$system['system_url']}/search/{if $hashtag}hashtag/{/if}{if $query}{$query}/articles{/if}">
-                  <strong>{__("Articles")}</strong>
-                </a>
-              </li>
-            {/if}
             <li class="nav-item">
               <a class="nav-link rounded-pill {if $tab == "users"}active{/if}" href="{$system['system_url']}/search/{if $query}{$query}/users{/if}">
                 <strong>{__("Users")}</strong>
               </a>
             </li>
-            {if $system['pages_enabled']}
-              <li class="nav-item">
-                <a class="nav-link rounded-pill {if $tab == "pages"}active{/if}" href="{$system['system_url']}/search/{if $query}{$query}/pages{/if}">
-                  <strong>{__("Pages")}</strong>
-                </a>
-              </li>
-            {/if}
-            {if $system['groups_enabled']}
-              <li class="nav-item">
-                <a class="nav-link rounded-pill {if $tab == "groups"}active{/if}" href="{$system['system_url']}/search/{if $query}{$query}/groups{/if}">
-                  <strong>{__("Groups")}</strong>
-                </a>
-              </li>
-            {/if}
-            {if $system['events_enabled']}
-              <li class="nav-item">
-                <a class="nav-link rounded-pill {if $tab == "events"}active{/if}" href="{$system['system_url']}/search/{if $query}{$query}/events{/if}">
-                  <strong>{__("Events")}</strong>
-                </a>
-              </li>
-            {/if}
           </ul>
           <!-- panel nav -->
 
