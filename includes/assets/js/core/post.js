@@ -1,12 +1,5 @@
-/**
- * post js
- * 
- * Sngine
- * 
- */
 
-// initialize API URLs
-/* live */
+//live post
 api['live/reaction'] = ajax_path + "live/reaction.php";
 /* posts */
 api['comments/filter'] = ajax_path + "posts/filter.php?handle=comments";
@@ -697,7 +690,7 @@ $(function () {
       $('.js_publisher-tab[data-tab="location"]').addClass('activated');
     }
   });
-  /* publisher patterns */
+  //publisher patterns
   $('body').on('click', '.js_publisher-pattern', function () {
     var _this = $(this);
     var publisher = _this.parents('.publisher');
@@ -1617,7 +1610,7 @@ $(function () {
         });
     });
   });
-  /* approve post */
+  //approve post
   $('body').on('click', '.js_approve-post', function (e) {
     e.preventDefault();
     var _this = $(this);
