@@ -2678,27 +2678,75 @@ $(function () {
 
 
   // handle announcment
+  // Bình luận: Đây là phần xử lý các thông báo (announcements) trên giao diện
+
   /* hide */
+  // Bình luận: Phần này xử lý việc ẩn một thông báo
+
   $('body').on('click', '.js_announcment-remover', function () {
+    // Gắn sự kiện "click" vào toàn bộ body, lắng nghe khi có phần tử nào có class 'js_announcment-remover' được nhấp vào
+    // Khi nhấp vào, thực hiện function sau:
+    // (Lưu ý: Có lỗi chính tả nhỏ trong class 'js_announcment-remover', đúng ra phải là 'js_announcement-remover')
+
     var announcment = $(this).parent();
+    // Lấy phần tử cha trực tiếp của phần tử được nhấp (thẻ chứa nút xóa, thường là container của thông báo)
+    // Lưu vào biến announcment để sử dụng sau
+    // (Lưu ý: Tương tự, biến 'announcment' có lỗi chính tả, đúng ra là 'announcement')
+
     var id = $(this).data('id');
+    // Lấy giá trị của thuộc tính data-id từ phần tử được nhấp (thẻ có class 'js_announcment-remover')
+    // Thuộc tính này chứa ID của thông báo, dùng để gửi lên server
+    // Lưu vào biến id
+
     confirm(__['Delete'], __['Are you sure you want to delete this?'], function () {
+      // Hiển thị một hộp thoại xác nhận (confirm) với:
+      // - Tiêu đề: __['Delete'] (dịch là "Xóa")
+      // - Nội dung: __['Are you sure you want to delete this?'] (dịch là "Bạn có chắc chắn muốn xóa cái này không?")
+      // Nếu người dùng nhấn OK (đồng ý), thực hiện function bên trong:
+
       /* remove the announcment */
       announcment.fadeOut();
+      // Ẩn dần (fadeOut) phần tử thông báo (announcment) khỏi giao diện người dùng
+      // Hiệu ứng fadeOut tạo cảm giác mượt mà khi thông báo biến mất
+
       $.post(api['posts/reaction'], { 'do': 'hide_announcement', 'id': id }, function (response) {
+        // Gửi một yêu cầu POST đến API tại đường dẫn api['posts/reaction']
+        // Dữ liệu gửi đi là một object chứa:
+        // - 'do': 'hide_announcement' (thao tác là ẩn thông báo)
+        // - 'id': Giá trị ID của thông báo (lấy từ data-id)
+        // Sau khi server trả về phản hồi, thực hiện function với tham số response:
+
         /* check the response */
         if (response.callback) {
           eval(response.callback);
         }
+        // Kiểm tra nếu phản hồi từ server (response) có thuộc tính 'callback'
+        // Nếu có, sử dụng hàm eval() để thực thi chuỗi mã JavaScript trong response.callback
+        // (Cảnh báo: eval() có thể gây rủi ro bảo mật nếu dữ liệu từ server không được kiểm soát chặt chẽ)
+
       }, 'json')
+        // Chỉ định rằng phản hồi từ server được mong đợi ở định dạng JSON
+
         .fail(function () {
+          // Nếu yêu cầu POST thất bại (do lỗi mạng, server, v.v.), thực hiện function này:
+
           modal('#modal-message', { title: __['Error'], message: __['There is something that went wrong!'] });
+          // Hiển thị một cửa sổ modal (popup) với ID '#modal-message'
+          // - Tiêu đề: __['Error'] (dịch là "Lỗi")
+          // - Nội dung: __['There is something that went wrong!'] (dịch là "Có điều gì đó đã xảy ra không đúng!")
         });
+      // Kết thúc xử lý lỗi của $.post
+
       /* hide the confimation */
       $('#modal').modal('hide');
-    });
-  });
+      // Ẩn hộp thoại xác nhận (modal) với ID '#modal' sau khi hoàn tất thao tác
+      // Điều này đảm bảo rằng cửa sổ xác nhận không còn hiển thị trên giao diện
 
+    });
+    // Kết thúc function của confirm
+
+  });
+  // Kết thúc sự kiện click
 
   // handle daytime messages
   /* hide */
