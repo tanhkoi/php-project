@@ -3,8 +3,11 @@
 /**
  * ajax -> admin -> delete
  * 
+ * Script xử lý các yêu cầu xóa dữ liệu từ phía admin thông qua AJAX.
+ * Hỗ trợ xóa nhiều loại dữ liệu khác nhau như theme, user, post, page, group, v.v.
  * 
- * 
+ * NEW: Đảm bảo kiểm tra quyền admin/moderator và xử lý lỗi một cách an toàn trước khi thực hiện xóa.
+ * NEW: Sử dụng return_json_async() cho các tác vụ nặng để chạy nền, cải thiện hiệu suất.
  */
 
 // fetch bootstrap
@@ -40,6 +43,7 @@ try {
       if ($check_themes->fetch_assoc()['count'] > 0) {
         throw new Exception(__("This is your only default theme you need to mark other theme as default before change/delete this one"));
       }
+      // NEW: Xóa theme khỏi cơ sở dữ liệu sau khi kiểm tra
       $db->query(sprintf("DELETE FROM system_themes WHERE theme_id = %s", secure($_POST['id'], 'int'))) or _error('SQL_ERROR_THROWEN');
       break;
 
@@ -48,6 +52,7 @@ try {
       if (!$user->_is_admin) {
         modal("MESSAGE", __("System Message"), __("You don't have the right permission to access this"));
       }
+      // NEW: Xóa ngôn ngữ khỏi hệ thống
       $db->query(sprintf("DELETE FROM system_languages WHERE language_id = %s", secure($_POST['id'], 'int'))) or _error('SQL_ERROR_THROWEN');
       break;
 
@@ -56,6 +61,7 @@ try {
       if (!$user->_is_admin) {
         modal("MESSAGE", __("System Message"), __("You don't have the right permission to access this"));
       }
+      // NEW: Xóa quốc gia khỏi danh sách
       $db->query(sprintf("DELETE FROM system_countries WHERE country_id = %s", secure($_POST['id'], 'int'))) or _error('SQL_ERROR_THROWEN');
       break;
 
@@ -64,6 +70,7 @@ try {
       if (!$user->_is_admin) {
         modal("MESSAGE", __("System Message"), __("You don't have the right permission to access this"));
       }
+      // NEW: Xóa đơn vị tiền tệ
       $db->query(sprintf("DELETE FROM system_currencies WHERE currency_id = %s", secure($_POST['id'], 'int'))) or _error('SQL_ERROR_THROWEN');
       break;
 
@@ -72,6 +79,7 @@ try {
       if (!$user->_is_admin) {
         modal("MESSAGE", __("System Message"), __("You don't have the right permission to access this"));
       }
+      // NEW: Xóa giới tính khỏi hệ thống
       $db->query(sprintf("DELETE FROM system_genders WHERE gender_id = %s", secure($_POST['id'], 'int'))) or _error('SQL_ERROR_THROWEN');
       break;
 
@@ -91,7 +99,7 @@ try {
       if (isset($_POST['node']) && is_numeric($_POST['node'])) {
         $db->query(sprintf("DELETE FROM reports WHERE report_id = %s", secure($_POST['node'], 'int'))) or _error('SQL_ERROR_THROWEN');
       }
-      /* delete user */
+      // NEW: Gọi hàm xóa người dùng với tất cả dữ liệu liên quan
       $user->delete_user($_POST['id']);
       break;
 
@@ -107,7 +115,7 @@ try {
       // [BACKGROUND PROCESS]
       /* return async */
       return_json_async();
-      /* delete user posts */
+      // NEW: Xóa tất cả bài viết của người dùng
       $user->delete_posts($_POST['id']);
       break;
 
@@ -116,6 +124,7 @@ try {
       if (!$user->_is_admin) {
         modal("MESSAGE", __("System Message"), __("You don't have the right permission to access this"));
       }
+      // NEW: Xóa phiên đăng nhập của người dùng
       $db->query(sprintf("DELETE FROM users_sessions WHERE session_id = %s", secure($_POST['id'], 'int'))) or _error('SQL_ERROR_THROWEN');
       break;
 
@@ -124,7 +133,7 @@ try {
       if (!$user->_is_admin) {
         modal("MESSAGE", __("System Message"), __("You don't have the right permission to access this"));
       }
-      // unsubscribe user package
+      // NEW: Hủy gói đăng ký của người dùng
       $user->unsubscribe_user_package($_POST['id']);
       break;
 
@@ -144,6 +153,7 @@ try {
           'default_custom_user_group' => '0'
         ]);
       }
+      // NEW: Xóa nhóm người dùng và cập nhật lại tất cả người dùng liên quan
       break;
 
     case 'permissions_group':
@@ -160,6 +170,7 @@ try {
       $db->query(sprintf("UPDATE packages SET package_permissions_group_id = '0' WHERE package_permissions_group_id = %s", secure($_POST['id'], 'int'))) or _error('SQL_ERROR_THROWEN');
       /* delete permissions group */
       $db->query(sprintf("DELETE FROM permissions_groups WHERE permissions_group_id = %s", secure($_POST['id'], 'int'))) or _error('SQL_ERROR_THROWEN');
+      // NEW: Xóa nhóm quyền sau khi kiểm tra không còn nhóm người dùng nào sử dụng
       break;
 
     case 'video_category':
@@ -167,6 +178,7 @@ try {
       if (!$user->_is_admin && !$user->_is_moderator) {
         modal("MESSAGE", __("System Message"), __("You don't have the right permission to access this"));
       }
+      // NEW: Xóa danh mục video
       $user->delete_category("posts_videos_categories", $_POST['id']);
       break;
 
@@ -182,7 +194,7 @@ try {
       if (isset($_POST['node']) && is_numeric($_POST['node'])) {
         $db->query(sprintf("DELETE FROM reports WHERE report_id = %s", secure($_POST['node'], 'int'))) or _error('SQL_ERROR_THROWEN');
       }
-      /* delete page */
+      // NEW: Xóa trang và các báo cáo liên quan
       $user->delete_page($_POST['id']);
       break;
 
@@ -194,7 +206,7 @@ try {
       // [BACKGROUND PROCESS]
       /* return async */
       return_json_async();
-      /* delete page posts */
+      // NEW: Xóa tất cả bài viết của trang
       $user->delete_posts($_POST['id'], 'page');
       break;
 
@@ -203,6 +215,7 @@ try {
       if (!$user->_is_admin && !$user->_is_moderator) {
         modal("MESSAGE", __("System Message"), __("You don't have the right permission to access this"));
       }
+      // NEW: Xóa danh mục trang
       $user->delete_category("pages_categories", $_POST['id']);
       break;
 
@@ -218,7 +231,7 @@ try {
       if (isset($_POST['node']) && is_numeric($_POST['node'])) {
         $db->query(sprintf("DELETE FROM reports WHERE report_id = %s", secure($_POST['node'], 'int'))) or _error('SQL_ERROR_THROWEN');
       }
-      /* delete group */
+      // NEW: Xóa nhóm và các báo cáo liên quan
       $user->delete_group($_POST['id']);
       break;
 
@@ -230,7 +243,7 @@ try {
       // [BACKGROUND PROCESS]
       /* return async */
       return_json_async();
-      /* delete group posts */
+      // NEW: Xóa tất cả bài viết của nhóm
       $user->delete_posts($_POST['id'], 'group');
       break;
 
@@ -239,6 +252,7 @@ try {
       if (!$user->_is_admin && !$user->_is_moderator) {
         modal("MESSAGE", __("System Message"), __("You don't have the right permission to access this"));
       }
+      // NEW: Xóa danh mục nhóm
       $user->delete_category("groups_categories", $_POST['id']);
       break;
 
@@ -254,7 +268,7 @@ try {
       if (isset($_POST['node']) && is_numeric($_POST['node'])) {
         $db->query(sprintf("DELETE FROM reports WHERE report_id = %s", secure($_POST['node'], 'int'))) or _error('SQL_ERROR_THROWEN');
       }
-      /* delete event */
+      // NEW: Xóa sự kiện và các báo cáo liên quan
       $user->delete_event($_POST['id']);
       break;
 
@@ -266,7 +280,7 @@ try {
       // [BACKGROUND PROCESS]
       /* return async */
       return_json_async();
-      /* delete event posts */
+      // NEW: Xóa tất cả bài viết của sự kiện
       $user->delete_posts($_POST['id'], 'event');
       break;
 
@@ -275,6 +289,7 @@ try {
       if (!$user->_is_admin && !$user->_is_moderator) {
         modal("MESSAGE", __("System Message"), __("You don't have the right permission to access this"));
       }
+      // NEW: Xóa danh mục sự kiện
       $user->delete_category("events_categories", $_POST['id']);
       break;
 
@@ -283,6 +298,7 @@ try {
       if (!$user->_is_admin && !$user->_is_moderator) {
         modal("MESSAGE", __("System Message"), __("You don't have the right permission to access this"));
       }
+      // NEW: Xóa danh mục blog
       $user->delete_category("blogs_categories", $_POST['id']);
       break;
 
@@ -291,6 +307,7 @@ try {
       if (!$user->_is_admin && !$user->_is_moderator) {
         modal("MESSAGE", __("System Message"), __("You don't have the right permission to access this"));
       }
+      // NEW: Xóa danh mục thị trường
       $user->delete_category("market_categories", $_POST['id']);
       break;
 
@@ -303,6 +320,7 @@ try {
       $db->query(sprintf("DELETE FROM orders WHERE order_id = %s", secure($_POST['id'], 'int'))) or _error('SQL_ERROR_THROWEN');
       /* delete order items */
       $db->query(sprintf("DELETE FROM orders_items WHERE order_id = %s", secure($_POST['id'], 'int'))) or _error('SQL_ERROR_THROWEN');
+      // NEW: Xóa đơn hàng và các mục đơn hàng liên quan
       break;
 
     case 'offers_category':
@@ -310,6 +328,7 @@ try {
       if (!$user->_is_admin && !$user->_is_moderator) {
         modal("MESSAGE", __("System Message"), __("You don't have the right permission to access this"));
       }
+      // NEW: Xóa danh mục ưu đãi
       $user->delete_category("offers_categories", $_POST['id']);
       break;
 
@@ -318,6 +337,7 @@ try {
       if (!$user->_is_admin && !$user->_is_moderator) {
         modal("MESSAGE", __("System Message"), __("You don't have the right permission to access this"));
       }
+      // NEW: Xóa danh mục công việc
       $user->delete_category("jobs_categories", $_POST['id']);
       break;
 
@@ -333,7 +353,7 @@ try {
       if (isset($_POST['node']) && is_numeric($_POST['node'])) {
         $db->query(sprintf("DELETE FROM reports WHERE report_id = %s", secure($_POST['node'], 'int'))) or _error('SQL_ERROR_THROWEN');
       }
-      /* delete forum */
+      // NEW: Xóa diễn đàn và các báo cáo liên quan
       $user->delete_forum($_POST['id']);
       break;
 
@@ -351,6 +371,7 @@ try {
         /* delete report */
         $db->query(sprintf("DELETE FROM reports WHERE report_id = %s", secure($_POST['node'], 'int'))) or _error('SQL_ERROR_THROWEN');
       }
+      // NEW: Xóa chủ đề diễn đàn và các báo cáo liên quan
       break;
 
     case 'forum_reply':
@@ -365,7 +386,7 @@ try {
       if (isset($_POST['node']) && is_numeric($_POST['node'])) {
         $db->query(sprintf("DELETE FROM reports WHERE report_id = %s", secure($_POST['node'], 'int'))) or _error('SQL_ERROR_THROWEN');
       }
-      /* delete forum reply */
+      // NEW: Xóa trả lời trong diễn đàn và các báo cáo liên quan
       $user->delete_forum_reply($_POST['id']);
       break;
 
@@ -374,6 +395,7 @@ try {
       if (!$user->_is_admin && !$user->_is_moderator) {
         modal("MESSAGE", __("System Message"), __("You don't have the right permission to access this"));
       }
+      // NEW: Xóa phim khỏi hệ thống
       $db->query(sprintf("DELETE FROM movies WHERE movie_id = %s", secure($_POST['id'], 'int'))) or _error('SQL_ERROR_THROWEN');
       break;
 
@@ -382,6 +404,7 @@ try {
       if (!$user->_is_admin && !$user->_is_moderator) {
         modal("MESSAGE", __("System Message"), __("You don't have the right permission to access this"));
       }
+      // NEW: Xóa thể loại phim
       $db->query(sprintf("DELETE FROM movies_genres WHERE genre_id = %s", secure($_POST['id'], 'int'))) or _error('SQL_ERROR_THROWEN');
       break;
 
@@ -390,6 +413,7 @@ try {
       if (!$user->_is_admin && !$user->_is_moderator) {
         modal("MESSAGE", __("System Message"), __("You don't have the right permission to access this"));
       }
+      // NEW: Xóa trò chơi khỏi hệ thống
       $db->query(sprintf("DELETE FROM games WHERE game_id = %s", secure($_POST['id'], 'int'))) or _error('SQL_ERROR_THROWEN');
       break;
 
@@ -398,6 +422,7 @@ try {
       if (!$user->_is_admin && !$user->_is_moderator) {
         modal("MESSAGE", __("System Message"), __("You don't have the right permission to access this"));
       }
+      // NEW: Xóa thể loại trò chơi
       $db->query(sprintf("DELETE FROM games_genres WHERE genre_id = %s", secure($_POST['id'], 'int'))) or _error('SQL_ERROR_THROWEN');
       break;
 
@@ -406,6 +431,7 @@ try {
       if (!$user->_is_admin) {
         modal("MESSAGE", __("System Message"), __("You don't have the right permission to access this"));
       }
+      // NEW: Xóa quảng cáo khỏi hệ thống
       $db->query(sprintf("DELETE FROM ads_system WHERE ads_id = %s", secure($_POST['id'], 'int'))) or _error('SQL_ERROR_THROWEN');
       break;
 
@@ -430,6 +456,7 @@ try {
       if ($package['stripe_plan_id']) {
         stripe_deactivate_plan($package['stripe_plan_id']);
       }
+      // NEW: Xóa gói dịch vụ và cập nhật trạng thái người dùng, hủy các kế hoạch thanh toán liên quan
       break;
 
     case 'apps_category':
@@ -437,6 +464,7 @@ try {
       if (!$user->_is_admin) {
         modal("MESSAGE", __("System Message"), __("You don't have the right permission to access this"));
       }
+      // NEW: Xóa danh mục ứng dụng
       $user->delete_category("developers_apps_categories", $_POST['id']);
       break;
 
@@ -445,6 +473,7 @@ try {
       if (!$user->_is_admin && !$user->_is_moderator) {
         modal("MESSAGE", __("System Message"), __("You don't have the right permission to access this"));
       }
+      // NEW: Xóa báo cáo đơn lẻ
       $db->query(sprintf("DELETE FROM reports WHERE report_id = %s", secure($_POST['id'], 'int'))) or _error('SQL_ERROR_THROWEN');
       break;
 
@@ -453,6 +482,7 @@ try {
       if (!$user->_is_admin && !$user->_is_moderator) {
         modal("MESSAGE", __("System Message"), __("You don't have the right permission to access this"));
       }
+      // NEW: Xóa tất cả báo cáo trong hệ thống
       $db->query("DELETE FROM reports") or _error('SQL_ERROR_THROWEN');
       break;
 
@@ -461,6 +491,7 @@ try {
       if (!$user->_is_admin && !$user->_is_moderator) {
         modal("MESSAGE", __("System Message"), __("You don't have the right permission to access this"));
       }
+      // NEW: Xóa danh mục báo cáo
       $user->delete_category("reports_categories", $_POST['id']);
       break;
 
@@ -476,7 +507,7 @@ try {
       if (isset($_POST['node']) && is_numeric($_POST['node'])) {
         $db->query(sprintf("DELETE FROM reports WHERE report_id = %s", secure($_POST['node'], 'int'))) or _error('SQL_ERROR_THROWEN');
       }
-      /* delete post */
+      // NEW: Xóa bài viết và các báo cáo liên quan
       $user->delete_post($_POST['id'], false);
       break;
 
@@ -492,7 +523,7 @@ try {
       if (isset($_POST['node']) && is_numeric($_POST['node'])) {
         $db->query(sprintf("DELETE FROM reports WHERE report_id = %s", secure($_POST['node'], 'int'))) or _error('SQL_ERROR_THROWEN');
       }
-      /* delete comment */
+      // NEW: Xóa bình luận và các báo cáo liên quan
       $user->delete_comment($_POST['id']);
       break;
 
@@ -501,6 +532,7 @@ try {
       if (!$user->_is_admin) {
         modal("MESSAGE", __("System Message"), __("You don't have the right permission to access this"));
       }
+      // NEW: Xóa mục khỏi danh sách đen
       $db->query(sprintf("DELETE FROM blacklist WHERE node_id = %s", secure($_POST['id'], 'int'))) or _error('SQL_ERROR_THROWEN');
       break;
 
@@ -509,6 +541,7 @@ try {
       if (!$user->_is_admin) {
         modal("MESSAGE", __("System Message"), __("You don't have the right permission to access this"));
       }
+      // NEW: Xóa trường tùy chỉnh và các giá trị liên quan
       $db->query(sprintf("DELETE FROM custom_fields WHERE field_id = %s", secure($_POST['id'], 'int'))) or _error('SQL_ERROR_THROWEN');
       $db->query(sprintf("DELETE FROM custom_fields_values WHERE field_id = %s", secure($_POST['id'], 'int'))) or _error('SQL_ERROR_THROWEN');
       break;
@@ -518,6 +551,7 @@ try {
       if (!$user->_is_admin) {
         modal("MESSAGE", __("System Message"), __("You don't have the right permission to access this"));
       }
+      // NEW: Xóa trang tĩnh
       $db->query(sprintf("DELETE FROM static_pages WHERE page_id = %s", secure($_POST['id'], 'int'))) or _error('SQL_ERROR_THROWEN');
       break;
 
@@ -526,6 +560,7 @@ try {
       if (!$user->_is_admin) {
         modal("MESSAGE", __("System Message"), __("You don't have the right permission to access this"));
       }
+      // NEW: Xóa mẫu màu bài viết
       $db->query(sprintf("DELETE FROM posts_colored_patterns WHERE pattern_id = %s", secure($_POST['id'], 'int'))) or _error('SQL_ERROR_THROWEN');
       break;
 
@@ -534,6 +569,7 @@ try {
       if (!$user->_is_admin) {
         modal("MESSAGE", __("System Message"), __("You don't have the right permission to access this"));
       }
+      // NEW: Xóa widget khỏi hệ thống
       $db->query(sprintf("DELETE FROM widgets WHERE widget_id = %s", secure($_POST['id'], 'int'))) or _error('SQL_ERROR_THROWEN');
       break;
 
@@ -542,6 +578,7 @@ try {
       if (!$user->_is_admin) {
         modal("MESSAGE", __("System Message"), __("You don't have the right permission to access this"));
       }
+      // NEW: Xóa emoji khỏi hệ thống
       $db->query(sprintf("DELETE FROM emojis WHERE emoji_id = %s", secure($_POST['id'], 'int'))) or _error('SQL_ERROR_THROWEN');
       break;
 
@@ -550,6 +587,7 @@ try {
       if (!$user->_is_admin) {
         modal("MESSAGE", __("System Message"), __("You don't have the right permission to access this"));
       }
+      // NEW: Xóa sticker khỏi hệ thống
       $db->query(sprintf("DELETE FROM stickers WHERE sticker_id = %s", secure($_POST['id'], 'int'))) or _error('SQL_ERROR_THROWEN');
       break;
 
@@ -558,6 +596,7 @@ try {
       if (!$user->_is_admin) {
         modal("MESSAGE", __("System Message"), __("You don't have the right permission to access this"));
       }
+      // NEW: Xóa quà tặng khỏi hệ thống
       $db->query(sprintf("DELETE FROM gifts WHERE gift_id = %s", secure($_POST['id'], 'int'))) or _error('SQL_ERROR_THROWEN');
       break;
 
@@ -566,6 +605,7 @@ try {
       if (!$user->_is_admin) {
         modal("MESSAGE", __("System Message"), __("You don't have the right permission to access this"));
       }
+      // NEW: Xóa thông báo khỏi hệ thống
       $db->query(sprintf("DELETE FROM announcements WHERE announcement_id = %s", secure($_POST['id'], 'int'))) or _error('SQL_ERROR_THROWEN');
       break;
 
