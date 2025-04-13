@@ -28,7 +28,6 @@ if (!$system['pages_enabled'] || !$system['offers_enabled']) {
 
 try {
 
-  // initialize the return array
   $return = array();
 
   switch ($_GET['do']) {
