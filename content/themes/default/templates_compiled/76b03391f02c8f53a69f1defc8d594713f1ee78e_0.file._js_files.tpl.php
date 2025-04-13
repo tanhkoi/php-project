@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-11-11 12:05:35
+/* Smarty version 4.3.4, created on 2025-04-13 12:50:17
   from 'C:\xampp\htdocs\content\themes\default\templates\_js_files.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_6731f30f11d8a0_72630063',
+  'unifunc' => 'content_67fbb309bcb248_42459449',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '76b03391f02c8f53a69f1defc8d594713f1ee78e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\content\\themes\\default\\templates\\_js_files.tpl',
-      1 => 1698837436,
+      1 => 1744548615,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6731f30f11d8a0_72630063 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67fbb309bcb248_42459449 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Initialize --><?php echo '<script'; ?>
 >/* initialize vars */var site_title = "<?php echo __($_smarty_tpl->tpl_vars['system']->value['system_title']);?>
 ";var site_path = "<?php echo $_smarty_tpl->tpl_vars['system']->value['system_url'];?>
@@ -427,9 +427,6 @@ echo '<script'; ?>
 ><?php if ($_smarty_tpl->tpl_vars['view']->value == "dashboard") {
 echo '<script'; ?>
 >$(function() {$('#admin-chart-dashboard').highcharts({lang: {viewFullscreen: __['View Fullscreen'],printChart: __['Print Chart'],downloadPNG: __['Download PNG'],downloadJPEG: __['Download JPEG'],downloadPDF: __['Download PDF'],downloadSVG: __['Download SVG vector image'],contextButtonTitle: __['Chart context menu'],},chart: {type: 'column',backgroundColor: 'transparent',},title: {text: __['Monthly Average']},xAxis: {categories: [__['Jan'],__['Feb'],__['Mar'],__['Apr'],__['May'],__['Jun'],__['Jul'],__['Aug'],__['Sep'],__['Oct'],__['Nov'],__['Dec']],crosshair: true},yAxis: {min: 0,title: {text: __['Total']}},tooltip: {headerFormat: '<span style="font-size:10px">{point.key}</span><table>',pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +'<td style="padding:0"><b>{point.y}</b></td></tr>',footerFormat: '</table>',shared: true,useHTML: true},plotOptions: {column: {pointPadding: 0.2,borderWidth: 0}},series: [{name: __['Users'],data: [<?php echo implode(',',$_smarty_tpl->tpl_vars['chart']->value['users']);?>
-]}, {name: __['Pages'],data: [<?php echo implode(',',$_smarty_tpl->tpl_vars['chart']->value['pages']);?>
-]}, {name: __['Groups'],data: [<?php echo implode(',',$_smarty_tpl->tpl_vars['chart']->value['groups']);?>
-]}, {name: __['Events'],data: [<?php echo implode(',',$_smarty_tpl->tpl_vars['chart']->value['events']);?>
 ]}, {name: __['Posts'],data: [<?php echo implode(',',$_smarty_tpl->tpl_vars['chart']->value['posts']);?>
 ]}]});});<?php echo '</script'; ?>
 ><?php }

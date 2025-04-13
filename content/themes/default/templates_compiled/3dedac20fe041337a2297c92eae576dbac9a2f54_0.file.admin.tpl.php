@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2025-04-13 12:47:46
+/* Smarty version 4.3.4, created on 2025-04-13 12:49:15
   from 'C:\xampp\htdocs\content\themes\default\templates\admin.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_67fbb272ef0a08_34819857',
+  'unifunc' => 'content_67fbb2cbd42fa9_82771931',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3dedac20fe041337a2297c92eae576dbac9a2f54' => 
     array (
       0 => 'C:\\xampp\\htdocs\\content\\themes\\default\\templates\\admin.tpl',
-      1 => 1744548466,
+      1 => 1744548476,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:_footer.tpl' => 1,
   ),
 ),false)) {
-function content_67fbb272ef0a08_34819857 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67fbb2cbd42fa9_82771931 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender('file:_head.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender('file:_header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -159,45 +159,6 @@ $_smarty_tpl->_subTemplateRender('file:_header.tpl', $_smarty_tpl->cache_id, $_s
         </div>
       </div>
       <!-- System -->
-
-      <!-- Modules -->
-      <div class="card mb15">
-        <div class="card-header block-title">
-          <?php echo __("Modules");?>
-
-        </div>
-        
-      </div>
-      <!-- Modules -->
-
-      <!-- Money -->
-      
-      <!-- Money -->
-
-      <!-- Payments -->
-      
-      <!-- Payments -->
-
-      <!-- Developers -->
-      
-      <!-- Developers -->
-
-      <!-- Tools -->
-      
-      <!-- Tools -->
-
-      <!-- Customization -->
-      
-      <!-- Customization -->
-
-      <!-- Reach -->
-      
-      <!-- Reach -->
-
-      <!-- System -->
-      
-      <!-- System -->
-
     </div>
     <!-- left panel -->
 

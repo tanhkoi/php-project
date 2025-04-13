@@ -547,18 +547,6 @@
               data: [{','|implode:$chart['users']}]
 
             }, {
-              name: __['Pages'],
-              data: [{','|implode:$chart['pages']}]
-
-            }, {
-              name: __['Groups'],
-              data: [{','|implode:$chart['groups']}]
-
-            }, {
-              name: __['Events'],
-              data: [{','|implode:$chart['events']}]
-
-            }, {
               name: __['Posts'],
               data: [{','|implode:$chart['posts']}]
 
