@@ -2,9 +2,6 @@
 
 /**
  * ajax -> posts -> story
- * 
- * 
- * 
  */
 
 // fetch bootstrap
@@ -65,11 +62,8 @@ try {
       if (count($photos) == 0 && count($videos) == 0) {
         _error(400);
       }
-
       // post story
       $user->post_story($_POST['message'], $photos, $videos, $is_ads);
-
-      // return
       $return['callback'] = "window.location.reload();";
       break;
 
@@ -80,7 +74,6 @@ try {
       break;
 
     case 'delete':
-      // delete story
       $user->delete_my_story();
       break;
 
