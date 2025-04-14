@@ -9,7 +9,19 @@
 /* live */
 api['live/reaction'] = ajax_path + "live/reaction.php";
 /* posts */
-
+api['comments/filter'] = ajax_path + "posts/filter.php?handle=comments";
+api['posts/filter'] = ajax_path + "posts/filter.php?handle=posts";
+api['posts/post'] = ajax_path + "posts/post.php";
+api['posts/scraper'] = ajax_path + "posts/scraper.php";
+api['posts/comment'] = ajax_path + "posts/comment.php";
+api['posts/reaction'] = ajax_path + "posts/reaction.php";
+api['posts/edit'] = ajax_path + "posts/edit.php";
+api['posts/'] = ajax_path + "posts/product.php";
+api['posts/story'] = ajax_path + "posts/story.php";
+/* albums */
+api['albums/action'] = ajax_path + "albums/action.php";
+/* forums */
+api['forums/delete'] = ajax_path + "forums/delete.php";
 
 
 // initialize voice recording global vars
@@ -21,18 +33,6 @@ var voice_recording_object;
 var voice_recording_stream;
 
 
-// initialize live post global vars
-if (live_enabled) {
-  var agora_client = AgoraRTC.createClient({ mode: 'live', codec: 'vp8' });
-  if (system_debugging_mode == true) {
-    AgoraRTC.setLogLevel(0);
-  } else {
-    AgoraRTC.setLogLevel(4);
-  }
-  var live_post_realtime_thread;
-  var live_post_realtime_process = false;
-  var live_post_streaming_process = false;
-}
 
 
 // publisher tab
