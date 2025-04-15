@@ -73,8 +73,6 @@ try {
 				user_registered, 
 				user_verified, 
 				user_relationship, 
-				user_biography,
-				user_website
 				FROM users WHERE user_id = %s", secure($user_id, 'int'))) or _error('SQL_ERROR_THROWEN');
       if ($get_user->num_rows > 0) {
         while ($_user = $get_user->fetch_assoc()) {
