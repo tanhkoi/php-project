@@ -1,4 +1,3 @@
-
 //live post
 api['live/reaction'] = ajax_path + "live/reaction.php";
 /* posts */
@@ -3019,30 +3018,29 @@ $(function () {
           eval(response.callback);
         }
         // Kiểm tra nếu phản hồi từ server (response) có thuộc tính 'callback'
-        // Nếu có, sử dụng hàm eval() để thực thi chuỗi mã JavaScript trong response.callback
-        // (Cảnh báo: eval() có thể gây rủi ro bảo mật nếu dữ liệu từ server không được kiểm soát chặt chẽ)
+        // Nếu có, sử dụng eval() để thực thi chuỗi mã JavaScript trong response.callback
+        // (Cảnh báo: Sử dụng eval() có thể nguy hiểm nếu không kiểm soát được dữ liệu đầu vào)
 
       }, 'json')
         // Chỉ định rằng phản hồi từ server được mong đợi ở định dạng JSON
 
         .fail(function () {
-          // Nếu yêu cầu POST thất bại (do lỗi mạng, server, v.v.), thực hiện function này:
+          // Nếu yêu cầu POST thất bại (lỗi server hoặc mạng), thực hiện function này:
 
           modal('#modal-message', { title: __['Error'], message: __['There is something that went wrong!'] });
-          // Hiển thị một cửa sổ modal (popup) với ID '#modal-message'
-          // - Tiêu đề: __['Error'] (dịch là "Lỗi")
-          // - Nội dung: __['There is something that went wrong!'] (dịch là "Có điều gì đó đã xảy ra không đúng!")
+          // Hiển thị một modal (cửa sổ popup) với ID '#modal-message'
+          // Tiêu đề của modal là __['Error'] (dịch là "Lỗi")
+          // Nội dung thông báo là __['There is something that went wrong!'] (dịch là "Có điều gì đó đã xảy ra không đúng!")
         });
-      // Kết thúc xử lý lỗi của $.post
+      // Kết thúc xử lý thất bại của $.post
 
       /* hide the confimation */
       $('#modal').modal('hide');
-      // Ẩn hộp thoại xác nhận (modal) với ID '#modal' sau khi hoàn tất thao tác
-      // Điều này đảm bảo rằng cửa sổ xác nhận không còn hiển thị trên giao diện
+      // Ẩn hộp thoại xác nhận (modal) với ID '#modal' sau khi hoàn tất
+      // Đảm bảo rằng hộp thoại xác nhận đã được đóng
 
     });
     // Kết thúc function của confirm
-
   });
   // Kết thúc sự kiện click
 
