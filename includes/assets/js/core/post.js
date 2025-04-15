@@ -8,7 +8,7 @@ api['posts/scraper'] = ajax_path + "posts/scraper.php";
 api['posts/comment'] = ajax_path + "posts/comment.php";
 api['posts/reaction'] = ajax_path + "posts/reaction.php";
 api['posts/edit'] = ajax_path + "posts/edit.php";
-api['posts/product'] = ajax_path + "posts/product.php";
+api['posts/'] = ajax_path + "posts/product.php";
 api['posts/story'] = ajax_path + "posts/story.php";
 /* albums */
 api['albums/action'] = ajax_path + "albums/action.php";
@@ -25,18 +25,6 @@ var voice_recording_object;
 var voice_recording_stream;
 
 
-// initialize live post global vars
-if (live_enabled) {
-  var agora_client = AgoraRTC.createClient({ mode: 'live', codec: 'vp8' });
-  if (system_debugging_mode == true) {
-    AgoraRTC.setLogLevel(0);
-  } else {
-    AgoraRTC.setLogLevel(4);
-  }
-  var live_post_realtime_thread;
-  var live_post_realtime_process = false;
-  var live_post_streaming_process = false;
-}
 
 
 // publisher tab
@@ -2392,12 +2380,30 @@ $(function () {
     reactions.removeAttr('style').hide();
   }
   /* reactions toggle */
+  // Bình luận cũ: Đánh dấu đây là phần xử lý bật/tắt phản ứng (reactions toggle)
+  // Bình luận mới: Phần này xử lý việc hiển thị hoặc ẩn menu phản ứng (như biểu tượng cảm xúc) khi tương tác với phần tử reactions-wrapper
+
   $('body').on('mouseenter', '.reactions-wrapper', function () {
+    // Bình luận mới: Gắn sự kiện "mouseenter" vào toàn bộ body, lắng nghe khi con trỏ chuột di chuyển vào phần tử có class 'reactions-wrapper'
+    // Bình luận mới: Khi sự kiện xảy ra, thực hiện function sau:
+
     if (!is_iPad() && $(window).width() >= 970) {
+      // Bình luận mới: Kiểm tra hai điều kiện:
+      // Bình luận mới: - !is_iPad(): Thiết bị không phải là iPad (hàm is_iPad có thể được định nghĩa ở nơi khác để kiểm tra loại thiết bị)
+      // Bình luận mới: - $(window).width() >= 970: Chiều rộng cửa sổ trình duyệt lớn hơn hoặc bằng 970 pixel (tức là giao diện máy tính để bàn)
+      // Bình luận mới: Nếu cả hai điều kiện đúng, thực hiện khối lệnh bên trong:
+
       /* desktop -> show the reactions */
       _show_reactions(this);
+      // Bình luận cũ: Máy tính để bàn -> hiển thị các phản ứng
+      // Bình luận mới: Gọi hàm _show_reactions, truyền vào phần tử hiện tại (this)
+      // Bình luận mới: Hàm _show_reactions (được định nghĩa ở nơi khác) chịu trách nhiệm hiển thị menu phản ứng (reactions) trên giao diện
     }
+    // Bình luận mới: Kết thúc khối if (nếu không phải máy tính để bàn hoặc là iPad, không làm gì)
+
   });
+
+  // Bình luận mới: Kết thúc sự kiện mouseenter
   $('body').on('mouseleave', '.reactions-wrapper', function () {
     if (!is_iPad() && $(window).width() >= 970) {
       /* desktop -> hide the reactions */
