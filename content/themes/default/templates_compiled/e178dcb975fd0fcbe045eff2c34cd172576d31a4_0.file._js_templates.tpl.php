@@ -1,27 +1,27 @@
 <?php
-/* Smarty version 4.3.4, created on 2025-04-13 13:36:11
+/* Smarty version 4.3.4, created on 2025-04-15 09:47:40
   from 'C:\xampp\htdocs\content\themes\default\templates\_js_templates.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_67fbbdcbe71fe7_07681541',
+  'unifunc' => 'content_67fe2b3c605db5_38872719',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e178dcb975fd0fcbe045eff2c34cd172576d31a4' => 
     array (
       0 => 'C:\\xampp\\htdocs\\content\\themes\\default\\templates\\_js_templates.tpl',
-      1 => 1744551368,
+      1 => 1744710453,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
-    'file:__svg_icons.tpl' => 47,
+    'file:__svg_icons.tpl' => 45,
   ),
 ),false)) {
-function content_67fbbdcbe71fe7_07681541 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67fe2b3c605db5_38872719 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\xampp\\htdocs\\vendor\\smarty\\smarty\\libs\\plugins\\modifier.number_format.php','function'=>'smarty_modifier_number_format',),));
 ?>
 <!-- Toasts --><div class="toast-container p-3 bottom-0 start-0 fixed-bottom"></div><!-- Toasts --><!-- Modals --><div id="modal" class="modal fade"><div class="modal-dialog"><div class="modal-content"><div class="modal-body"><div class="loader pt10 pb10"></div></div></div></div></div><?php echo '<script'; ?>
@@ -224,14 +224,10 @@ echo __("Voice note recorded successfully");?>
 <div class="float-end"><button type="button" class="btn-close js_voice-remove"></button></div></div><!-- success message --><!-- start recording --><div class="btn-voice-start js_voice-start"><i class="fas fa-microphone mr5"></i><?php echo __("Record");?>
 </div><!-- start recording --><!-- stop recording --><div class="btn-voice-stop js_voice-stop" style="display: none"><i class="far fa-stop-circle mr5"></i><?php echo __("Recording");?>
  <span class="js_voice-timer">00:00</span></div><!-- stop recording --></div></div><div class="chat-attachments attachments clearfix x-hidden"><ul><li class="loading"><div class="progress x-progress"><div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div></div></li></ul></div><div class="x-form chat-form invisible"><div class="chat-form-message"><textarea class="js_autosize js_post-message" dir="auto" rows="1" placeholder='<?php echo __("Write a message");?>
-'></textarea></div><ul class="x-form-tools clearfix"><?php if ($_smarty_tpl->tpl_vars['system']->value['chat_photos_enabled']) {?><li class="x-form-tools-attach"><i class="far fa-image fa-lg fa-fw js_x-uploader" data-handle="chat"></i></li><?php }
-if ($_smarty_tpl->tpl_vars['system']->value['voice_notes_chat_enabled']) {?><li class="x-form-tools-voice js_chat-voice-notes-toggle"><i class="fas fa-microphone fa-lg fa-fw"></i></li><?php }?><li class="x-form-tools-emoji js_emoji-menu-toggle"><i class="far fa-smile-wink fa-lg fa-fw"></i></li></ul></div></div><!-- content --></div><?php echo '</script'; ?>
+'></textarea></div><ul class="x-form-tools clearfix"><?php if ($_smarty_tpl->tpl_vars['system']->value['chat_photos_enabled']) {?><li class="x-form-tools-attach"><i class="far fa-image fa-lg fa-fw js_x-uploader" data-handle="chat"></i></li><?php }?></ul></div></div><!-- content --></div><?php echo '</script'; ?>
 ><?php echo '<script'; ?>
  id="chat-box" type="text/template"><div class="chat-widget chat-box opened" id="{{chat_key_value}}" {{#conversation_id}}data-cid="{{conversation_id}}" {{/conversation_id}} {{#user_id}}data-uid="{{user_id}}" {{/user_id}}><!-- head --><div class="chat-widget-head"><!-- label --><div class="chat-head-label"><span class="badge rounded-pill bg-danger js_chat-box-label"></span></div><!-- label --><!-- user-card --><a class="chat-user-card" href="<?php echo $_smarty_tpl->tpl_vars['system']->value['system_url'];?>
-/{{link}}" title="{{name_list}}">{{^multiple}}<div class="avatar"><img src="{{picture}}"><i class="online-status fa fa-circle offline js_chat-box-status"></i></div>{{/multiple}}<div class="name"><span>{{name}}</span></div></a><!-- user-card --><!-- buttons--><div class="chat-head-btns"><!-- video/audio calls (not multiple) -->{{^multiple}}<?php if ($_smarty_tpl->tpl_vars['system']->value['audio_call_enabled'] && $_smarty_tpl->tpl_vars['user']->value->_data['can_start_audio_call']) {?><span class="chat-head-btn js_chat-call-start" data-type="audio" data-uid="{{user_id}}" data-name="{{name_list}}"><?php $_smarty_tpl->_subTemplateRender('file:__svg_icons.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('icon'=>"call_audio",'class'=>"main-icon",'width'=>"20px",'height'=>"20px"), 0, true);
-?></span><?php }
-if ($_smarty_tpl->tpl_vars['system']->value['video_call_enabled'] && $_smarty_tpl->tpl_vars['user']->value->_data['can_start_video_call']) {?><span class="chat-head-btn js_chat-call-start" data-type="video" data-uid="{{user_id}}" data-name="{{name_list}}"><?php $_smarty_tpl->_subTemplateRender('file:__svg_icons.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('icon'=>"call_video",'class'=>"main-icon",'width'=>"20px",'height'=>"20px"), 0, true);
-?></span><?php }?>{{/multiple}}<!-- video/audio calls (not multiple) --><span class="chat-head-btn js_chat-box-close"><?php $_smarty_tpl->_subTemplateRender('file:__svg_icons.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('icon'=>"close",'class'=>"main-icon",'width'=>"20px",'height'=>"20px"), 0, true);
+/{{link}}" title="{{name_list}}">{{^multiple}}<div class="avatar"><img src="{{picture}}"><i class="online-status fa fa-circle offline js_chat-box-status"></i></div>{{/multiple}}<div class="name"><span>{{name}}</span></div></a><!-- user-card --><!-- buttons--><div class="chat-head-btns"><!-- video/audio calls (not multiple) -->{{^multiple}}{{/multiple}}<!-- video/audio calls (not multiple) --><span class="chat-head-btn js_chat-box-close"><?php $_smarty_tpl->_subTemplateRender('file:__svg_icons.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('icon'=>"close",'class'=>"main-icon",'width'=>"20px",'height'=>"20px"), 0, true);
 ?></span></div><!-- buttons--></div><!-- head --><!-- content --><div class="chat-widget-content"><div class="chat-conversations js_scroller"><ul></ul></div><div class="chat-typing"><i class="far fa-comment-dots mr5"></i><span class="loading-dots"><span class="js_chat-typing-users"></span> <?php echo __("Typing");?>
 </span></div><div class="chat-voice-notes"><div class="voice-recording-wrapper" data-handle="chat"><!-- processing message --><div class="x-hidden js_voice-processing-message"><?php $_smarty_tpl->_subTemplateRender('file:__svg_icons.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array('icon'=>"upload",'class'=>"main-icon mr5",'width'=>"16px",'height'=>"16px"), 0, true);
 echo __("Processing");?>
@@ -240,8 +236,7 @@ echo __("Voice note recorded successfully");?>
 <div class="float-end"><button type="button" class="btn-close js_voice-remove"></button></div></div><!-- success message --><!-- start recording --><div class="btn-voice-start js_voice-start"><i class="fas fa-microphone mr5"></i><?php echo __("Record");?>
 </div><!-- start recording --><!-- stop recording --><div class="btn-voice-stop js_voice-stop" style="display: none"><i class="far fa-stop-circle mr5"></i><?php echo __("Recording");?>
  <span class="js_voice-timer">00:00</span></div><!-- stop recording --></div></div><div class="chat-attachments attachments clearfix x-hidden"><ul><li class="loading"><div class="progress x-progress"><div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div></div></li></ul></div><div class="x-form chat-form"><div class="chat-form-message"><textarea class="js_autosize js_post-message" dir="auto" rows="1" placeholder='<?php echo __("Write a message");?>
-'></textarea></div><ul class="x-form-tools clearfix"><?php if ($_smarty_tpl->tpl_vars['system']->value['chat_photos_enabled']) {?><li class="x-form-tools-attach"><i class="far fa-image fa-lg fa-fw js_x-uploader" data-handle="chat"></i></li><?php }
-if ($_smarty_tpl->tpl_vars['system']->value['voice_notes_chat_enabled']) {?><li class="x-form-tools-voice js_chat-voice-notes-toggle"><i class="fas fa-microphone fa-lg fa-fw"></i></li><?php }?><li class="x-form-tools-emoji js_emoji-menu-toggle"><i class="far fa-smile-wink fa-lg fa-fw"></i></li><li class="x-form-tools-colors js_chat-colors-menu-toggle js_chat-color-me {{^conversation_id}}x-hidden{{/conversation_id}}"><i class="fa fa-circle fa-lg fa-fw"></i></li></ul></div></div><!-- content --></div><?php echo '</script'; ?>
+'></textarea></div><ul class="x-form-tools clearfix"><?php if ($_smarty_tpl->tpl_vars['system']->value['chat_photos_enabled']) {?><li class="x-form-tools-attach"><i class="far fa-image fa-lg fa-fw js_x-uploader" data-handle="chat"></i></li><?php }?></ul></div></div><!-- content --></div><?php echo '</script'; ?>
 ><?php echo '<script'; ?>
  id="chat-message" type="text/template"><li><div class="conversation clearfix right" id="{{id}}"><div class="conversation-body"><div class="text js_chat-color-me" {{#color}}style="background-color: {{color}}" {{/color}}>{{{message}}}{{#image}}<span class="text-link js_lightbox-nodata {{#message}}mt5{{/message}}" data-image="<?php echo $_smarty_tpl->tpl_vars['system']->value['system_uploads'];?>
 /{{image}}"><img alt="" class="img-fluid" src="<?php echo $_smarty_tpl->tpl_vars['system']->value['system_uploads'];?>

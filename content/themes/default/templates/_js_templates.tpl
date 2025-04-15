@@ -694,14 +694,6 @@
                   <i class="far fa-image fa-lg fa-fw js_x-uploader" data-handle="chat"></i>
                 </li>
               {/if}
-              {if $system['voice_notes_chat_enabled']}
-                <li class="x-form-tools-voice js_chat-voice-notes-toggle">
-                  <i class="fas fa-microphone fa-lg fa-fw"></i>
-                </li>
-              {/if}
-              <li class="x-form-tools-emoji js_emoji-menu-toggle">
-                <i class="far fa-smile-wink fa-lg fa-fw"></i>
-              </li>
             </ul>
           </div>
         </div>
@@ -735,16 +727,6 @@
           <div class="chat-head-btns">
             <!-- video/audio calls (not multiple) -->
             {literal}{{^multiple}}{/literal}
-            {if $system['audio_call_enabled'] && $user->_data['can_start_audio_call']}
-              <span class="chat-head-btn js_chat-call-start" data-type="audio" data-uid="{literal}{{user_id}}{/literal}" data-name="{literal}{{name_list}}{/literal}">
-                {include file='__svg_icons.tpl' icon="call_audio" class="main-icon" width="20px" height="20px"}
-              </span>
-            {/if}
-            {if $system['video_call_enabled'] && $user->_data['can_start_video_call']}
-              <span class="chat-head-btn js_chat-call-start" data-type="video" data-uid="{literal}{{user_id}}{/literal}" data-name="{literal}{{name_list}}{/literal}">
-                {include file='__svg_icons.tpl' icon="call_video" class="main-icon" width="20px" height="20px"}
-              </span>
-            {/if}
             {literal}{{/multiple}}{/literal}
             <!-- video/audio calls (not multiple) -->
             <span class="chat-head-btn js_chat-box-close">
@@ -815,17 +797,6 @@
                   <i class="far fa-image fa-lg fa-fw js_x-uploader" data-handle="chat"></i>
                 </li>
               {/if}
-              {if $system['voice_notes_chat_enabled']}
-                <li class="x-form-tools-voice js_chat-voice-notes-toggle">
-                  <i class="fas fa-microphone fa-lg fa-fw"></i>
-                </li>
-              {/if}
-              <li class="x-form-tools-emoji js_emoji-menu-toggle">
-                <i class="far fa-smile-wink fa-lg fa-fw"></i>
-              </li>
-              <li class="x-form-tools-colors js_chat-colors-menu-toggle js_chat-color-me {literal}{{^conversation_id}}{/literal}x-hidden{literal}{{/conversation_id}}{/literal}">
-                <i class="fa fa-circle fa-lg fa-fw"></i>
-              </li>
             </ul>
           </div>
         </div>

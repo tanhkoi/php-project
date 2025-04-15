@@ -79,15 +79,6 @@ try {
         /* get users */
         $get_monthly_users = $db->query("SELECT COUNT(*) as count FROM users WHERE YEAR(user_registered) = YEAR(CURRENT_DATE()) AND MONTH(user_registered) = $i");
         $chart['users'][$i] = $get_monthly_users->fetch_assoc()['count'];
-        /* get pages */
-        $get_monthly_pages = $db->query("SELECT COUNT(*) as count FROM pages WHERE YEAR(page_date) = YEAR(CURRENT_DATE()) AND MONTH(page_date) = $i");
-        $chart['pages'][$i] = $get_monthly_pages->fetch_assoc()['count'];
-        /* get groups */
-        $get_monthly_groups = $db->query("SELECT COUNT(*) as count FROM `groups` WHERE YEAR(group_date) = YEAR(CURRENT_DATE()) AND MONTH(group_date) = $i");
-        $chart['groups'][$i] = $get_monthly_groups->fetch_assoc()['count'];
-        /* get events */
-        $get_monthly_events = $db->query("SELECT COUNT(*) as count FROM `events` WHERE YEAR(event_date) = YEAR(CURRENT_DATE()) AND MONTH(event_date) = $i");
-        $chart['events'][$i] = $get_monthly_events->fetch_assoc()['count'];
         /* get posts */
         $get_monthly_posts = $db->query("SELECT COUNT(*) as count FROM posts WHERE YEAR(time) = YEAR(CURRENT_DATE()) AND MONTH(time) = $i");
         $chart['posts'][$i] = $get_monthly_posts->fetch_assoc()['count'];
@@ -97,7 +88,7 @@ try {
       $smarty->assign('insights', $insights);
       $smarty->assign('chart', $chart);
       break;
-      //admin dashboard
+    //admin dashboard
     case 'settings':
       // check admin|moderator permission
       if ($user->_is_moderator) {
