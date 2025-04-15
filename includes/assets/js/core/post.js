@@ -2115,7 +2115,8 @@ $(function () {
   $('body').on('click', '.js_comments-toggle', function () {
     $(this).parents('.post, .lightbox-post').find('.post-footer').toggle();
   });
-  /* show comment form */
+  // show comment form
+  // Thay đổi: Hiển thị form nhập bình luận khi người dùng nhấn vào nút bình luận
   $('body').on('click', '.js_comment', function () {
     var footer = $(this).parents('.post, .lightbox-post, .article').find('.post-footer');
     footer.show();
