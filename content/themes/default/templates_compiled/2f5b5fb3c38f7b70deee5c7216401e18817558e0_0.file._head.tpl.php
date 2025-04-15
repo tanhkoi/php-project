@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.3.4, created on 2024-11-11 12:05:33
+/* Smarty version 4.3.4, created on 2025-04-13 15:54:22
   from 'C:\xampp\htdocs\content\themes\default\templates\_head.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.3.4',
-  'unifunc' => 'content_6731f30da13501_66084044',
+  'unifunc' => 'content_67fbde2e62d1f4_27928288',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2f5b5fb3c38f7b70deee5c7216401e18817558e0' => 
     array (
       0 => 'C:\\xampp\\htdocs\\content\\themes\\default\\templates\\_head.tpl',
-      1 => 1698010002,
+      1 => 1744559635,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:_head.css.tpl' => 1,
   ),
 ),false)) {
-function content_6731f30da13501_66084044 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67fbde2e62d1f4_27928288 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\xampp\\htdocs\\vendor\\smarty\\smarty\\libs\\plugins\\modifier.truncate.php','function'=>'smarty_modifier_truncate',),));
 ?>
 <!doctype html>
@@ -83,7 +83,7 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\xampp\\htdocs\\vendor\\s
     <!-- Favicon -->
 
     <!-- Fonts [Poppins|Font-Awesome] -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" rel="stylesheet" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Fonts [Poppins|Font-Awesome] -->
 

@@ -8,24 +8,6 @@
 <form class="publisher-mini">
   <div class="modal-body">
 
-    {if $user->_is_admin}
-      <div class="form-table-row">
-        <div class="avatar">
-          {include file='__svg_icons.tpl' icon="ads" class="main-icon" width="40px" height="40px"}
-        </div>
-        <div>
-          <div class="form-label h6">{__("Ads Story")}</div>
-          <div class="form-text d-none d-sm-block">{__("Share this story as ads so all users see it")}</div>
-        </div>
-        <div class="text-end">
-          <label class="switch" for="is_ads">
-            <input type="checkbox" name="is_ads" id="is_ads">
-            <span class="slider round"></span>
-          </label>
-        </div>
-      </div>
-    {/if}
-
     <div class="row">
       <div class="col-md-12">
         <div class="form-group">
@@ -45,19 +27,6 @@
         </ul>
       </div>
     </div>
-
-    {if $user->_data['can_upload_videos']}
-      <div class="form-group">
-        <label class="form-label">{__("Videos")}</label>
-        <div class="attachments clearfix" data-type="videos">
-          <ul>
-            <li class="add">
-              <i class="fa fa-video js_x-uploader" data-type="video" data-handle="publisher-mini" data-multiple="true"></i>
-            </li>
-          </ul>
-        </div>
-      </div>
-    {/if}
 
     <!-- error -->
     <div class="alert alert-danger mt15 mb0 x-hidden"></div>

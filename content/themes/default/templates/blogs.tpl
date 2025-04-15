@@ -584,39 +584,6 @@
                       <div class="title">{__("Timeline")}</div>
                     </label>
                     <!-- Timeline -->
-                    <!-- Page -->
-                    {if $system['pages_enabled'] && $pages}
-                      <input class="x-hidden input-label" type="radio" name="publish_to" id="publish_to_page" value="page" {if $share_to == "page"}checked="checked" {/if} />
-                      <label class="button-label" for="publish_to_page">
-                        <div class="icon">
-                          {include file='__svg_icons.tpl' icon="pages" class="main-icon" width="20px" height="20px"}
-                        </div>
-                        <div class="title">{__("Page")}</div>
-                      </label>
-                    {/if}
-                    <!-- Page -->
-                    <!-- Group -->
-                    {if $system['groups_enabled'] && $groups}
-                      <input class="x-hidden input-label" type="radio" name="publish_to" id="publish_to_group" value="group" {if $share_to == "group"}checked="checked" {/if} />
-                      <label class="button-label" for="publish_to_group">
-                        <div class="icon">
-                          {include file='__svg_icons.tpl' icon="groups" class="main-icon" width="20px" height="20px"}
-                        </div>
-                        <div class="title">{__("Group")}</div>
-                      </label>
-                    {/if}
-                    <!-- Group -->
-                    <!-- Event -->
-                    {if $system['events_enabled'] && $events}
-                      <input class="x-hidden input-label" type="radio" name="publish_to" id="publish_to_event" value="event" {if $share_to == "event"}checked="checked" {/if} />
-                      <label class="button-label" for="publish_to_event">
-                        <div class="icon">
-                          {include file='__svg_icons.tpl' icon="events" class="main-icon" width="20px" height="20px"}
-                        </div>
-                        <div class="title">{__("Event")}</div>
-                      </label>
-                    {/if}
-                    <!-- Event -->
                   </div>
                   <!-- publish to options -->
                 </div>
